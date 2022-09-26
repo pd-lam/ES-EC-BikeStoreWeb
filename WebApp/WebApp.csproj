@@ -186,6 +186,7 @@
     <Content Include="images\banner\SBANNER-PRE-ORDER-WAHOO.png" />
     <Content Include="images\banner\SBANNER-uu-dai.png" />
     <Content Include="images\logo.png" />
+    <Content Include="query\CreateBikeStoreDatabase.sql" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
