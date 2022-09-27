@@ -12,8 +12,8 @@ namespace WebApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public product()
         {
-            product_tag = new HashSet<product_tag>();
             imports = new HashSet<import>();
+            product_tag = new HashSet<product_tag>();
             order_items = new HashSet<order_items>();
             stocks = new HashSet<stock>();
         }
@@ -36,15 +36,15 @@ namespace WebApp.Models
         [StringLength(255)]
         public string image { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<product_tag> product_tag { get; set; }
-
         public virtual brand brand { get; set; }
 
         public virtual category category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<import> imports { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<product_tag> product_tag { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_items> order_items { get; set; }

@@ -6,18 +6,18 @@ namespace WebApp.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("actor.customers")]
-    public partial class customer
+    [Table("actor.staffs")]
+    public partial class staff
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public customer()
+        public staff()
         {
             orders = new HashSet<order>();
         }
 
         [Key]
         [StringLength(10)]
-        public string customer_id { get; set; }
+        public string staff_id { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -34,14 +34,7 @@ namespace WebApp.Models
         [StringLength(255)]
         public string email { get; set; }
 
-        [StringLength(255)]
-        public string street { get; set; }
-
-        [StringLength(50)]
-        public string district { get; set; }
-
-        [StringLength(50)]
-        public string city { get; set; }
+        public byte role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }

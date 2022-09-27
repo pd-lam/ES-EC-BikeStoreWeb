@@ -6,6 +6,7 @@ namespace WebApp.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("production.product_tag")]
     public partial class product_tag
     {
         [Key]

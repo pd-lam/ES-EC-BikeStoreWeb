@@ -18,7 +18,8 @@ namespace WebApp.Models
         [Key]
         public int order_id { get; set; }
 
-        public int? customer_id { get; set; }
+        [StringLength(10)]
+        public string customer_id { get; set; }
 
         public byte order_status { get; set; }
 
@@ -35,7 +36,15 @@ namespace WebApp.Models
 
         public int? service_pack_id { get; set; }
 
+        [StringLength(10)]
+        public string staff_id { get; set; }
+
+        [StringLength(255)]
+        public string description { get; set; }
+
         public virtual customer customer { get; set; }
+
+        public virtual staff staff { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_items> order_items { get; set; }

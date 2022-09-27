@@ -6,12 +6,12 @@ namespace WebApp.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("sales.user_logins")]
+    [Table("actor.user_logins")]
     public partial class user_logins
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int user_id { get; set; }
+        [StringLength(10)]
+        public string user_id { get; set; }
 
         [StringLength(50)]
         public string user_name { get; set; }
@@ -20,5 +20,7 @@ namespace WebApp.Models
         public string user_password { get; set; }
 
         public virtual customer customer { get; set; }
+
+        public virtual staff staff { get; set; }
     }
 }

@@ -134,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BDBikeStoreDbContext.cs" />
+    <Compile Include="Models\BikeStoreDbContext.cs" />
     <Compile Include="Models\brand.cs" />
     <Compile Include="Models\category.cs" />
     <Compile Include="Models\customer.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Models\product_tag.cs" />
     <Compile Include="Models\service.cs" />
     <Compile Include="Models\service_packs.cs" />
+    <Compile Include="Models\staff.cs" />
     <Compile Include="Models\stock.cs" />
     <Compile Include="Models\store.cs" />
     <Compile Include="Models\sysdiagram.cs" />
