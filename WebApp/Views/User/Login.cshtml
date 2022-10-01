@@ -1,9 +1,11 @@
 ﻿@model WebApp.Models.user_logins
 
+
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "_UserLayout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 @using (Html.BeginForm())
 {
@@ -20,11 +22,11 @@
                         <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                         <button type="button" class="btn btn-primary btn-floating mx-1">
                             <i class="fa-solid fa-envelope"></i>
-                        </button>                        
+                        </button>
                     </div>
 
-                    <div class="row my-4">                        
-                            <p class="text-center fw-bold mx-3 mb-0" style="color: #242729; font-size: 18px">Or</p> 
+                    <div class="row my-4">
+                        <p class="text-center fw-bold mx-3 mb-0" style="color: #242729; font-size: 18px">Or</p>
                     </div>
 
                     <!-- Username input -->
