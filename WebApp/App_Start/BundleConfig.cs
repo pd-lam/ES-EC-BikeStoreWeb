@@ -22,9 +22,11 @@ namespace WebApp
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.bundle.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.min.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                      "~/Content/bootstrap.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/admin").Include(
+                      "~/Content/admin-site.css"));
         }
     }
 }

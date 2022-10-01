@@ -4,6 +4,7 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -18,7 +19,7 @@
                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                         <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                         <button type="button" class="btn btn-primary btn-floating mx-1">
-                            <i class='bx bxl-gmail'></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </button>                        
                     </div>
 
@@ -63,7 +64,7 @@
                                 Remember me
                             </label>
                         </div>
-                        <a href="#!" class="text-body">Forgot password?</a>
+                        <a href="#!" class="text-body text-decoration-none">Forgot password?</a>
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2 mb-4">
