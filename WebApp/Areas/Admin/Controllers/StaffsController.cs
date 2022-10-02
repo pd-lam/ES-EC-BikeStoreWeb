@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
 
-namespace WebApp.Areas.Admin
+namespace WebApp.Areas.Admin.Controllers
 {
     public class StaffsController : Controller
     {
