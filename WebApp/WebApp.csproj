@@ -417,6 +417,7 @@
     <Content Include="Areas\Admin\Views\Stores\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Stores\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Stores\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_Shared\_IndexLayout.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -450,13 +451,11 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Home\_HomeLayout.cshtml" />
-    <Content Include="Views\User\_UserLayout.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\_Shared\" />
     <Folder Include="Content\home-site\" />
     <Folder Include="Content\staff-site\" />
   </ItemGroup>
