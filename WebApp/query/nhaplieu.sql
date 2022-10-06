@@ -15,6 +15,7 @@ INSERT INTO production.brands(brand_id,brand_name) VALUES(8,'Surly')
 INSERT INTO production.brands(brand_id,brand_name) VALUES(9,'Trek')
 
 SET IDENTITY_INSERT production.brands OFF; 
+GO
 
 
 --categorites
@@ -29,7 +30,7 @@ INSERT INTO production.categories(category_id,category_name) VALUES(6,'Mountain 
 INSERT INTO production.categories(category_id,category_name) VALUES(7,'Road Bikes')--đường phố
 
 SET IDENTITY_INSERT production.categories OFF; 
-
+GO
 
 
 --products
@@ -151,6 +152,7 @@ INSERT INTO production.products(product_id, product_name, brand_id, category_id,
 INSERT INTO production.products(product_id, product_name, brand_id, category_id, model_year, list_price) VALUES(100,'Trek Checkpoint ALR Frameset - 2019',9,7,2019,3199.99)
 
 SET IDENTITY_INSERT production.products OFF;
+GO
 
 --CUS
 alter table [actor].[customers] ADD CONSTRAINT cus_id default dbo.cus_id_auto() for customer_id
@@ -260,7 +262,8 @@ INSERT INTO sales.stores(store_name, phone, email, street,district, city)
 VALUES('Santa Cruz Bikes','(831) 476-4321','santacruz@bikes.shop', '3700 Portola Drive','1', 'Santa Cruz'),
       ('Baldwin Bikes','(516) 379-8888','baldwin@bikes.shop','4200 Chestnut Lane','3', 'Baldwin'),
       ('Rowlett Bikes','(972) 530-5555','rowlett@bikes.shop','8000 Fairway Avenue','7', 'Rowlett');
-	  
+GO
+
 -- production.stocks 
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,1,27);
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,2,5);
@@ -564,7 +567,8 @@ INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,97,28);
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,98,5);
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,99,19);
 INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,100,28);
- 
+GO
+
 --staff
 
 alter table [actor].[staffs] ADD CONSTRAINT stf_id default dbo.stf_id_auto() for staff_id
@@ -604,6 +608,7 @@ INSERT INTO actor.staffs(first_name, last_name, email, phone, role) VALUES('Caro
 INSERT INTO actor.staffs(first_name, last_name, email, phone, role) VALUES('Mikel','Wilkerson','mikel.wilkerson@bikes.com','(516) 379-1554',3);
 INSERT INTO actor.staffs(first_name, last_name, email, phone, role) VALUES('Londa','Gould','londa.gould@bikes.com','(234) 379-1455',3);
 INSERT INTO actor.staffs(first_name, last_name, email, phone, role) VALUES('Justina','Jenkins','justina.jenkins@bikes.com','(516) 479-1456',3);
+GO
 
 --service
 SET IDENTITY_INSERT sales.services ON; 
@@ -627,6 +632,7 @@ INSERT INTO sales.services(service_id,service_name,service_type) VALUES(13,'Inst
 INSERT INTO sales.services(service_id,service_name,service_type) VALUES(14,'Basic car cleaning','Cleaning')
 INSERT INTO sales.services(service_id,service_name,service_type) VALUES(15,'Detailed car cleaning','Cleaning')
 SET IDENTITY_INSERT sales.services OFF; 
+GO
 
 --service_packs
 SET IDENTITY_INSERT sales.service_packs ON; 
@@ -637,6 +643,7 @@ INSERT INTO sales.service_packs(service_pack_id,service_pack_name,price) VALUES(
 INSERT INTO sales.service_packs(service_pack_id,service_pack_name,price) VALUES(4,'PRO_VIP',20.00)
 
 SET IDENTITY_INSERT sales.service_packs OFF; 
+GO
 
 --services_service_packs
 INSERT INTO sales.services_service_packs(service_id,service_pack_id) VALUES(1,1)
@@ -656,6 +663,7 @@ INSERT INTO sales.services_service_packs(service_id,service_pack_id) VALUES(9,4)
 INSERT INTO sales.services_service_packs(service_id,service_pack_id) VALUES(11,4)
 INSERT INTO sales.services_service_packs(service_id,service_pack_id) VALUES(12,4)
 INSERT INTO sales.services_service_packs(service_id,service_pack_id) VALUES(15,4)
+GO
 
 --order
 SET IDENTITY_INSERT sales.orders ON; 
@@ -710,6 +718,7 @@ INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, requir
 INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(49,'CUS075',4,'20220131','20220201','20220202',2,4,'STF06');
 INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(50,'CUS095',4,'20220131','20220203','20220202',3,1,'STF010');
 SET IDENTITY_INSERT sales.orders OFF
+GO
 
 --ORDER_ITEMS
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(1,1,20,1,599.99,0.2);
@@ -859,7 +868,7 @@ INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_pric
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(50,1,3,1,999.99,0.05);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(50,2,26,2,599.99,0.07);
 INSERT INTO sales.order_items(order_id, item_id, product_id, quantity, list_price,discount) VALUES(50,3,13,2,269.99,0.2);
-
+GO
 
 
 --IMPORTS
@@ -1165,6 +1174,8 @@ INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALU
 INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,98,5,'20221001');
 INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,99,19,'20221001');
 INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,100,28,'20221001');
+GO
+
 --TAG
 SET IDENTITY_INSERT production.tags ON;
 INSERT INTO production.tags (tag_id, tag_name) VALUES (1,'SALE 5%')
@@ -1187,6 +1198,8 @@ INSERT INTO production.tags (tag_id, tag_name) VALUES (17,'SALE 85%')
 INSERT INTO production.tags (tag_id, tag_name) VALUES (18,'SALE 90%')
 INSERT INTO production.tags (tag_id, tag_name) VALUES (19,'BEST SELLER')
 INSERT INTO production.tags (tag_id, tag_name) VALUES (20,'NEW')
+GO
+
 --PRODUCT_TAG
 INSERT INTO production.product_tag(product_id,tag_id) VALUES (1,3)
 INSERT INTO production.product_tag(product_id,tag_id) VALUES (35,6)
@@ -1194,7 +1207,7 @@ INSERT INTO production.product_tag(product_id,tag_id) VALUES (19,4)
 INSERT INTO production.product_tag(product_id,tag_id) VALUES (45,19)
 INSERT INTO production.product_tag(product_id,tag_id) VALUES (76,3)
 INSERT INTO production.product_tag(product_id,tag_id) VALUES (85,20)
-
+GO
 
 
 --LOGIN_CUS
@@ -1300,6 +1313,8 @@ INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS098',
 INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS099','violetvalenzuela','123456')
 INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0100','cariekidd','123456')
 alter table actor.user_logins check constraint FK_user_logins_stafs
+GO
+
 
 --LOGIN_STF
 alter table actor.user_logins nocheck constraint FK_user_logins_customers
@@ -1335,6 +1350,6 @@ INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF029',
 INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF030','kalivargas','123456')
 INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF031','laylaterrell','123456')
 alter table actor.user_logins check constraint FK_user_logins_customers
-
+GO
 
 

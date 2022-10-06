@@ -15,6 +15,7 @@ begin
 end
 	return @ma_next
 end
+go
 
 
 -- TĂNG TỰ ĐỘNG ID CUSTOMERS
