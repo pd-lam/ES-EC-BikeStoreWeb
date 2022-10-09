@@ -10,8 +10,10 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
+
     public class UserController : Controller
     {
+        public SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\.;Initial Catalog=BikeStore;Integrated Security=True");
         // GET: Login
         public ActionResult Login()
         {
@@ -26,12 +28,12 @@ namespace WebApp.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(customer e, user_logins a)
+        public ActionResult Register(customer e, user_logins a)
         {
             if (Request.HttpMethod == "POST")
             {
                 customer er = new customer();
-                using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\.;Initial Catalog=BikeStore;Integrated Security=True"))
+                using (conn)
                 {
                     using (SqlCommand cmd = new SqlCommand("BikeStore", conn))
                     {
@@ -54,6 +56,37 @@ namespace WebApp.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public ActionResult CustomerInfo()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult CustomerInfo(CustomerInfoModel e)
+        {
+            //string fname, lname, phone, email, street, district, city;
+            var CusID = new customerModel().getCustomerId("debraburks", "123456");
+            var Customer = new customerModel();
+            if (Request.HttpMethod == "GET") //Hiện thị thông tin tài khoản
+            {
+                
+                var CusInfo = Customer.getCustomerInfoById("CUS012");
+                ViewBag.cusID = CusInfo[0];
+                ViewBag.first_name = CusInfo[1];
+                ViewBag.last_name = CusInfo[2];
+                ViewBag.phone = CusInfo[3];
+                ViewBag.email = CusInfo[4];
+                ViewBag.street = CusInfo[5];
+                ViewBag.district = CusInfo[6];
+                ViewBag.city = CusInfo[7];
+                Customer.updateCustomerInfoById("CUS012", "A", "A", "111111111", "A", "A", "A", "A");
+                return View();
+            }
+            return View();
+        }
+
+
+
 
     }
 }

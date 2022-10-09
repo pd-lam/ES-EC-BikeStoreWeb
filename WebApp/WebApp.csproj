@@ -144,6 +144,7 @@
     <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
     <Compile Include="Areas\Admin\Controllers\StoresController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
+    <Compile Include="Models\CustomerInfoModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -153,6 +154,7 @@
     <Compile Include="Models\brand.cs" />
     <Compile Include="Models\category.cs" />
     <Compile Include="Models\customer.cs" />
+    <Compile Include="Models\customerModel.cs" />
     <Compile Include="Models\import.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\order_items.cs" />
@@ -453,12 +455,14 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Home\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\User\CustomerInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\home-site\" />
     <Folder Include="Content\staff-site\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
