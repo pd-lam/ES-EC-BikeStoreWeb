@@ -11,151 +11,75 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>customer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.customer_id)
 
-    <section class="vh-100" style="background-color: #eee;">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-lg-12 col-xl-11">
-                    <div class="card text-black" style="border-radius: 25px;">
-                        @using (Html.BeginForm("CustomerInfo", "User", FormMethod.Get, new { @class = "card-body p-md-5" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
-
-                                </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2">
-
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Account Information</p>
-
-                                    <form class="mx-1 mx-md-4">
-                                        <div class="row mb-4">
-                                            <div class="col-6 d-flex flex-row align-items-center">
-                                                <i class='bx bxs-envelope mx-3' style="font-size: 32px"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.first_name, new
-                       {
-                 
-                           @class = "form-control form-control-lg",
-                       })
-                                                    @Html.LabelFor(m => m.first_name, "first_name", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-
-                                                </div>
-                                            </div>
-                                            <div class="col-6 d-flex flex-row align-items-center">
-                                                <i class='bx bxs-phone mx-3' style="font-size: 32px"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.last_name, new
-                       {
-                     
-                           @class = "form-control form-control-lg",
-                           
-                       })L
-                                                    @Html.LabelFor(m => m.last_name, "last_name", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-4">
-                                            <div class="col-6 align-items-center d-flex flex-row ">
-                                                <i class='bx bxs-edit-alt mx-3' style="font-size: 32px"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.phone, new
-                       {
-                     
-                           @class = "form-control form-control-lg",
-                       })
-                                                    @Html.LabelFor(m => m.phone, "phone", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-
-                                                </div>
-                                            </div>
-                                            <div class="col-6 align-items-center d-flex flex-row ">
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.email, new
-                       {
-                    
-                           @class = "form-control form-control-lg",
-                       })
-                                                    @Html.LabelFor(m => m.email, "email", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-4">
-                                            <div class="col-4 align-items-center d-flex flex-row ">
-                                                <i class='bx bxs-home mx-3' style="font-size: 32px"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.street, new
-                       {
-          
-                           @class = "form-control form-control-lg",
-                       })
-                                                    @Html.LabelFor(m => m.street, "street", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-
-                                                </div>
-                                            </div>
-                                            <div class="col-4 align-items-center d-flex flex-row ">
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.district, new
-                                               {
-
-                                                   @class = "form-control form-control-lg",
-                                               })
-                                                    @Html.LabelFor(m => m.district, "district", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-
-                                                </div>
-                                            </div>
-                                            <div class="col-4 align-items-center d-flex flex-row ">
-                                                <div class="form-outline flex-fill mb-0">
-                                                    @Html.EditorFor(m => m.city, new
-                       {
-                 
-                           @class = "form-control form-control-lg",
-                       })
-                                                    @Html.LabelFor(m => m.city, "city", new
-                                               {
-                                                   @class = "form-label",
-                                               })
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                <input type="submit" class="btn btn-primary btn-lg ps-5 pe-5" value="CustomerInfo" />
-                            </div>
-                        }
-                    </div>
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.first_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
             </div>
         </div>
-    </section>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.last_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.street, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.street, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.street, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.district, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.district, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.district, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.city, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 
 <div>

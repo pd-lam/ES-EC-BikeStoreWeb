@@ -57,7 +57,7 @@ namespace WebApp.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customer_id = new SelectList(db.user_logins, "user_id", "user_name", customer.customer_id);
+            //ViewBag.customer_id = new SelectList(db.user_logins, "user_id", "user_name", customer.customer_id);
             return View(customer);
         }
 
