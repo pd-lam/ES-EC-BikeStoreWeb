@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApp.Models.service>
+
+@{
+    ViewBag.Title = "Service";
+    Layout = "~/Views/Home/_HomeLayout.cshtml";
+}
+
+@section style
+{
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+}
+
+<div>
+    <img src="~/images/banner/Banner-web-service.jpeg"
+         class="w-100"
+         style="margin-top: 75px" />
+</div>
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-3 w3-sidebar w3-bar-block" style="position: initial !important">
+            @using (var ctx = new WebApp.Models.BikeStoreDbContext())
+            {
+                foreach (var sp in ctx.service_packs)
+                {
+                    <a href="@Url.Action("Service", "Home",
+                    new { id = sp.service_pack_id })"
+                       class="w3-bar-item w3-button">
+                        @Html.DisplayFor(s => sp.service_pack_name)
+                    </a>
+                }
+            }
+        </div>
+        <div class="col-9">
+            @try
+            {
+                foreach (var item in Model)
+                {
+                    <p>
+                        @Html.DisplayFor(itemModel => item.service_name)
+                    </p>
+                }
+            }
+            catch
+            {
+                <p>
+                    empty
+                </p>
+            }
+        </div>
+    </div>
+</div>
