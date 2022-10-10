@@ -19,5 +19,12 @@ namespace WebApp.Controllers
         {
             return View(db.products.Where(p => p.category_id == id).ToList());
         }
+
+        public ActionResult Service(int? id)
+        {              
+            var sp = db.service_packs.Where(s => s.service_pack_id == id);
+            var services = db.services.Where(s => s.service_packs == sp);
+            return View(services.ToList());
+        }
     }
 }

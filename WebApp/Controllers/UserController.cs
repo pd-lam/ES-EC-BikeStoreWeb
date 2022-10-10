@@ -19,5 +19,15 @@ namespace WebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Cart()
+        {
+            return View();
+        }
+
+        public ActionResult Payment()
+        {
+            return View();
+        }
     }
 }

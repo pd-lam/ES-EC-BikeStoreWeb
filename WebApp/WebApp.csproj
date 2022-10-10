@@ -144,6 +144,7 @@
     <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
     <Compile Include="Areas\Admin\Controllers\StoresController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
+    <Compile Include="Areas\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +196,7 @@
     <Content Include="images\banner\BANNER-Giai-phap-qua-tang-tri-an-khach-hang-07.png" />
     <Content Include="images\banner\BANNER-Giai-phap-qua-tang-tri-an-khach-hang-08.png" />
     <Content Include="images\banner\BANNER-scaled1.jpg" />
+    <Content Include="images\banner\Banner-web-service.jpeg" />
     <Content Include="images\banner\BANNER-WEB-WAHOO.png" />
     <Content Include="images\banner\banner-xe-dia-hinh-fix-2021-scaled.jpg" />
     <Content Include="images\banner\banner-xe-dua-fix-2021-scaled.jpg" />
@@ -453,6 +455,10 @@
     <Content Include="Views\Home\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\Service.cshtml" />
+    <Content Include="Views\User\Cart.cshtml" />
+    <Content Include="Views\User\Payment.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
