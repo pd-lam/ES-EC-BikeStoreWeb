@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApp.Models.order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
+}
+
+
+@section title {Order}
+
+@section fieldName
+{
+    <th>ID</th>
+    <th>Customer name</th>
+    <th>Order date</th>
+    <th>Require date</th>
+    <th>description</th>
+}
+
+<!-- RenderBody -->
+@foreach (var item in Model)
+{
+<tr>
+    <td style="width: 50px">
+        <span class="custom-checkbox">
+            <input type="checkbox"
+                   id="checkbox1"
+                   name="options[]"
+                   value="1">
+            <label for="checkbox1"></label>
+        </span>
+    </td>
+    <td style="width: 50px">
+        @Html.DisplayFor(modelItem => item.order_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.customer.first_name)
+        @Html.DisplayFor(modelItem => item.customer.last_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.order_date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.required_date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "Orders_saler",
+                    new { id = item.order_id })">
+            <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
+        </a>
+        <a href="@Url.Action("Details", "Orders_saler",
+                    new { id = item.order_id })">
+            <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
+        </a>
+    </td>
+</tr>
+}
+
+
+
