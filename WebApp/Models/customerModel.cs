@@ -55,7 +55,7 @@ namespace WebApp.Models
             return str;
         }
         
-        public void updateCustomerInfoById (string CusID, string fname, string lname, string phone, string email, string street, string district, string city)
+        public void updateCustomerInfoById (customer e)
         {
             try
             {
@@ -67,21 +67,21 @@ namespace WebApp.Models
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //khai báo các thông tin của tham số truyền vào
-                cmd.Parameters.AddWithValue("@id", CusID);
-                cmd.Parameters.AddWithValue("@fname", fname);
-                cmd.Parameters.AddWithValue("@lname", lname);
-                cmd.Parameters.AddWithValue("@phone", phone);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@street", street);
-                cmd.Parameters.AddWithValue("@district", district);
-                cmd.Parameters.AddWithValue("@city", city);
+                cmd.Parameters.AddWithValue("@id", e.customer_id);
+                cmd.Parameters.AddWithValue("@fname", e.first_name);
+                cmd.Parameters.AddWithValue("@lname", e.last_name);
+                cmd.Parameters.AddWithValue("@phone", e.phone);
+                cmd.Parameters.AddWithValue("@email", e.email);
+                cmd.Parameters.AddWithValue("@street", e.street);
+                cmd.Parameters.AddWithValue("@district", e.district);
+                cmd.Parameters.AddWithValue("@city", e.city);
 
                 //sử dụng ExecuteNonQuery để thực thi
                 cmd.ExecuteNonQuery();
                 //đóng chuỗi kết nối.
                 conn.Close();
             }
-            catch (Exception e)
+            catch (Exception error)
             {
                 Console.WriteLine("Co loi xay ra !!!" + e);
             }
@@ -91,7 +91,7 @@ namespace WebApp.Models
                 conn.Close();
             }
 
-            //https://freetuts.net/stored-procedure-trong-c-sharp-5457.html
+       
 
         }
 

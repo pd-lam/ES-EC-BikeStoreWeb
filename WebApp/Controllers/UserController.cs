@@ -57,32 +57,39 @@ namespace WebApp.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CustomerInfo()
-        {
+        public ActionResult CustomerInfo(customer model)
+        {//Gửi thông tin khách hàng cập nhật về server
+            using (var ctx = new BikeStoreDbContext())
+            {
+                var cus = ctx.customers.Where(s => s.customer_id == model.customer_id).FirstOrDefault();
+                cus = model;
+                ctx.SaveChanges();
+            }
             return View();
         }
         [HttpGet]
-        public ActionResult CustomerInfo(CustomerInfoModel e)
+        public ActionResult CustomerInfo(string id)
         {
-            //string fname, lname, phone, email, street, district, city;
-            var CusID = new customerModel().getCustomerId("debraburks", "123456");
-            var Customer = new customerModel();
-            if (Request.HttpMethod == "GET") //Hiện thị thông tin tài khoản
+            customer cus;
+            using (var ctx = new BikeStoreDbContext())
             {
-                
-                var CusInfo = Customer.getCustomerInfoById("CUS012");
-                ViewBag.cusID = CusInfo[0];
-                ViewBag.first_name = CusInfo[1];
-                ViewBag.last_name = CusInfo[2];
-                ViewBag.phone = CusInfo[3];
-                ViewBag.email = CusInfo[4];
-                ViewBag.street = CusInfo[5];
-                ViewBag.district = CusInfo[6];
-                ViewBag.city = CusInfo[7];
-                Customer.updateCustomerInfoById("CUS012", "A", "A", "111111111", "A", "A", "A", "A");
-                return View();
+                cus=ctx.customers.Where(s => s.customer_id == id).FirstOrDefault();
             }
-            return View();
+            //var model = new customer();
+            //var CusID = new customerModel().getCustomerId("debraburks", "123456");
+            //var Customer = new customerModel();
+
+            //var CusInfo = Customer.getCustomerInfoById(CusID);
+            //ViewBag.cusID = CusInfo[0];
+            //ViewBag.first_name = CusInfo[1];
+            //ViewBag.last_name = CusInfo[2];
+            //ViewBag.phone = CusInfo[3];
+            //ViewBag.email = CusInfo[4];
+            //ViewBag.street = CusInfo[5];
+            //ViewBag.district = CusInfo[6];
+            //ViewBag.city = CusInfo[7];
+            return View(cus);
+            
         }
 
 
