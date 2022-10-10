@@ -10,9 +10,21 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private BikeStoreDbContext db = new BikeStoreDbContext();
-        public ActionResult Index()
+        public ActionResult Index(string user_id)
         {
-            return View();
+            user_logins user_Logins = new user_logins
+            {
+                user_id = null,
+            };
+            if (!String.IsNullOrEmpty(user_id) && Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+            if (!String.IsNullOrEmpty(user_id) && Session["user_id"].ToString() == user_id)
+            {
+                user_Logins = db.user_logins.Find(user_id);
+            }
+            return View(user_Logins);
         }
 
         public ActionResult Category(int? id)

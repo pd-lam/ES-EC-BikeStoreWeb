@@ -32,21 +32,19 @@ namespace WebApp.Controllers
                     new SqlParameter("@user_password", user_password),
                 };
 
-                var result = _db.Database.SqlQuery<string>("check_login @user_name, @user_password", param).SingleOrDefault();
-                if (result == "user name does not exist")
+                var user_id = _db.Database.SqlQuery<string>("check_login @user_name, @user_password", param).SingleOrDefault();
+                if (user_id == "user name does not exist")
                 {
                     ModelState.AddModelError("", "Tài khoản không tồn tại");
                 }
-                else if (result == "incorrect password")
+                else if (user_id == "incorrect password")
                 {
                     ModelState.AddModelError("", "Sai mật khẩu");
                 }
                 else
                 {
-                    //add session
-                    Session["user_name"] = user_name;
-                    Session["user_id"] = result;
-                    return RedirectToAction("Index"); // Trang cần chuyển đến
+                    Session["user_id"] = user_id;
+                    return RedirectToAction("Index", "Home", new { user_id = user_id });
                 }
             }
             return View();
@@ -130,10 +128,11 @@ namespace WebApp.Controllers
             }
         }
 
-        // GET: ConfirmFogotPassword
-        public ActionResult ConfirmFogot()
+        //GET: ConfirmFogot
+        public ActionResult ConfirmFogot(string user_name)
         {
-            return View();
+            user_logins user_Logins = _db.user_logins.Find(user_name);
+            return View(user_Logins);
         }
 
         [HttpPost]
@@ -158,6 +157,13 @@ namespace WebApp.Controllers
         public ActionResult Register()
         {
             return View();
+        }
+
+        // GET: LogOut
+        public ActionResult LogOut()
+        {
+            Session["user_id"] = null;
+            return RedirectToAction("Login", "User");
         }
 
         public ActionResult Cart()
