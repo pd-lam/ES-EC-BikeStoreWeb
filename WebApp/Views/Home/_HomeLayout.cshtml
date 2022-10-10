@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section style{ @RenderSection("style", required: false) }
+
 <!-- #region Navbar -->
 <section style="font-weight: bold">
     <nav class="navbar navbar-expand-xl bg-light fixed-top">
@@ -37,14 +39,17 @@
                                 Sản phẩm
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="@Url.Action("RoadBike", "Product")">Xe Đạp Thể Thao Đường Phố</a>
-                                </li>
-                                <li><a class="dropdown-item" href="@Url.Action("MountainBike", "Product")">Xe Đạp Địa Hình</a></li>
-                                <li><a class="dropdown-item" href="#">Xe Đạp Đua</a></li>
-                                <li><a class="dropdown-item" href="#">Xe Đạp Gấp</a></li>
-                                <li><a class="dropdown-item" href="#">Xe Đạp Nữ</a></li>
-                                <li><a class="dropdown-item" href="#">Xe Đạp Trẻ Em</a></li>
+                                @using (var ctx = new WebApp.Models.BikeStoreDbContext())
+                                {
+                                    foreach (WebApp.Models.category cate in ctx.categories)
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" 
+                                               href="@Url.Action("Category", "Home", new {id = cate.category_id})">
+                                            @cate.category_name</a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                         </div>
                     </li>

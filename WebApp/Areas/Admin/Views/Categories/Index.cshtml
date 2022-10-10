@@ -1,19 +1,16 @@
-﻿@model IEnumerable<WebApp.Models.customer>
+﻿@model IEnumerable<WebApp.Models.category>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
 }
 
-@section title {Customer}
+@section title {Category}
 
 @section fieldName
 {
     <th>ID</th>
     <th>Name</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th>Address</th>
 }
 
 <!-- RenderBody -->
@@ -30,30 +27,18 @@
             </span>
         </td>
         <td style="width: 50px">
-            @Html.DisplayFor(modelItem => item.customer_id)
+            @Html.DisplayFor(modelItem => item.category_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.first_name)
-            @Html.DisplayFor(modelItem => item.last_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.street),
-            @Html.DisplayFor(modelItem => item.district),
-            @Html.DisplayFor(modelItem => item.city)
+            @Html.DisplayFor(modelItem => item.category_name)
         </td>
         <td>
             <a href="@Url.Action("Edit", "Customers",
-                    new { id = item.customer_id })">
+                    new { id = item.category_id })">
                 <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
             </a>
             <a href="@Url.Action("Details", "Customers",
-                    new { id = item.customer_id })">
+                    new { id = item.category_id })">
                 <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
             </a>
         </td>

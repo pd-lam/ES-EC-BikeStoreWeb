@@ -1,4 +1,4 @@
-﻿@model WebApp.Models.customer
+﻿@model WebApp.Models.store
 
 @{
     ViewBag.Title = "Details";
@@ -8,31 +8,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>customer</h4>
+    <h4>store</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.user_logins.user_name)
+            @Html.DisplayNameFor(model => model.store_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_logins.user_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.first_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.first_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.last_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.last_name)
+            @Html.DisplayFor(model => model.store_name)
         </dd>
 
         <dt>
@@ -75,9 +59,17 @@
             @Html.DisplayFor(model => model.city)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.customer_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.store_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
