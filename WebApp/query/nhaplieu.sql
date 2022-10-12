@@ -155,7 +155,7 @@ SET IDENTITY_INSERT production.products OFF;
 GO
 
 --CUS
-alter table [actor].[customers] ADD CONSTRAINT cus_id default dbo.cus_id_auto() for customer_id
+
 INSERT INTO actor.customers(first_name, last_name, phone, email, street,district, city) VALUES('Debra','Burks',NULL,'debra.burks@yahoo.com','9273 Thorne Ave. ','1','Orchard Park');
 INSERT INTO actor.customers(first_name, last_name, phone, email, street,district, city) VALUES('Kasha','Todd',NULL,'kasha.todd@yahoo.com','910 Vine Street ','2','Campbell');
 INSERT INTO actor.customers(first_name, last_name, phone, email, street,district, city) VALUES('Tameka','Fisher',NULL,'tameka.fisher@aol.com','769C Honey Creek St. ','3','Redondo Beach');
@@ -257,321 +257,125 @@ INSERT INTO actor.customers(first_name, last_name, phone, email, street,district
 INSERT INTO actor.customers(first_name, last_name, phone, email, street,district, city) VALUES('Carie','Kidd',NULL,'carie.kidd@yahoo.com','6 East Clinton Street ','9','Monroe');
 INSERT INTO actor.customers(first_name, last_name, phone, email, street,district, city) VALUES('Kellie','Franco',NULL,'kellie.franco@yahoo.com','444 South Walnut Rd. ','10','Commack');
 
---stores
-INSERT INTO sales.stores(store_name, phone, email, street,district, city)
-VALUES('Santa Cruz Bikes','(831) 476-4321','santacruz@bikes.shop', '3700 Portola Drive','1', 'Santa Cruz'),
-      ('Baldwin Bikes','(516) 379-8888','baldwin@bikes.shop','4200 Chestnut Lane','3', 'Baldwin'),
-      ('Rowlett Bikes','(972) 530-5555','rowlett@bikes.shop','8000 Fairway Avenue','7', 'Rowlett');
+--suppliers
+SET IDENTITY_INSERT production.suppliers ON;  
+INSERT INTO production.suppliers(supplier_id,supplier_name)
+VALUES(1,'Santa Cruz Bikes'),
+      (2,'Baldwin Bikes'),
+      (3,'Rowlett Bikes');
+
+SET IDENTITY_INSERT production.suppliers OFF;  
 GO
 
 -- production.stocks 
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,1,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,2,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,3,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,4,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,5,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,6,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,7,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,8,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,9,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,10,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,11,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,12,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,13,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,14,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,15,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,16,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,17,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,18,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,19,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,20,26);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,21,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,22,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,23,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,24,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,25,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,26,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,27,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,28,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,29,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,30,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,31,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,32,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,33,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,34,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,35,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,36,26);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,37,12);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,38,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,39,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,40,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,41,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,42,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,43,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,44,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,45,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,46,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,47,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,48,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,49,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,50,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,51,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,52,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,53,17);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,54,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,55,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,56,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,57,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,58,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,59,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,60,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,61,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,62,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,63,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,64,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,65,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,66,12);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,67,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,68,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,69,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,70,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,71,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,72,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,73,7);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,74,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,75,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,76,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,77,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,78,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,79,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,80,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,81,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,82,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,83,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,84,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,85,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,86,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,87,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,88,7);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,89,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,90,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,91,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,92,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,93,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,94,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,95,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,96,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,97,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,98,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,99,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(1,100,15);
+SET IDENTITY_INSERT production.stocks ON;  
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(1,1,27,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(2,2,5,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(3,3,6,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(4,4,23,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(5,5,22,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(6,6,0,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(7,7,8,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(8,8,0,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(9,9,11,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(10,10,15,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(11,11,8,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(12,12,16,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(13,13,13,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(14,14,8,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(15,15,3,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(16,16,4,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(17,17,2,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(18,18,16,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(19,19,4,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(20,20,26,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(21,21,24,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(22,22,29,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(23,23,9,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(24,24,10,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(25,25,10,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(26,26,16,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(27,27,21,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(28,28,20,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(29,29,13,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(30,30,30,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(31,31,2,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(32,32,0,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(33,33,10,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(34,34,2,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(35,35,18,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(36,36,26,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(37,37,12,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(38,38,13,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(39,39,2,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(40,40,24,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(41,41,10,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(42,42,0,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(43,43,2,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(44,44,1,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(45,45,15,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(46,46,19,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(47,47,21,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(48,48,5,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(49,49,8,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(50,50,29,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(51,51,2,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(52,52,18,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(53,53,17,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(54,54,11,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(55,55,11,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(56,56,15,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(57,57,1,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(58,58,1,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(59,59,22,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(60,60,19,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(61,61,30,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(62,62,21,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(63,63,4,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(64,64,30,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(65,65,10,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(66,66,12,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(67,67,19,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(68,68,30,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(69,69,4,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(70,70,3,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(71,71,25,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(72,72,9,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(73,73,7,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(74,74,9,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(75,75,23,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(76,76,15,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(77,77,16,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(78,78,13,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(79,79,13,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(80,80,11,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(81,81,25,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(82,82,1,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(83,83,13,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(84,84,11,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(85,85,23,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(86,86,19,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(87,87,27,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(88,88,7,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(89,89,9,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(90,90,4,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(91,91,8,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(92,92,0,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(93,93,22,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(94,94,6,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(95,95,25,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(96,96,20,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(97,97,20,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(98,98,28,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(99,99,28,'20221001');
+INSERT INTO production.stocks(stock_id, product_id, quantity, update_date) VALUES(100,100,15,'20221001');
 
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,1,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,2,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,3,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,4,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,5,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,6,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,7,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,8,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,9,17);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,10,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,11,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,12,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,13,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,14,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,15,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,16,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,17,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,18,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,19,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,20,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,21,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,22,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,23,12);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,24,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,25,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,26,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,27,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,28,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,29,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,30,17);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,31,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,32,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,33,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,34,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,35,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,36,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,37,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,38,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,39,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,40,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,41,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,42,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,43,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,44,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,45,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,46,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,47,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,48,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,49,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,50,7);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,51,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,52,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,53,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,54,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,55,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,56,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,57,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,58,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,59,17);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,60,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,61,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,62,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,63,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,64,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,65,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,66,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,67,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,68,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,69,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,70,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,71,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,72,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,73,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,74,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,75,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,76,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,77,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,78,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,79,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,80,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,81,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,82,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,83,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,84,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,85,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,86,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,87,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,88,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,89,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,90,26);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,91,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,92,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,93,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,94,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,95,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,96,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,97,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,98,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,99,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(2,100,12);
-
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,1,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,2,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,3,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,4,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,5,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,6,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,7,12);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,8,12);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,9,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,10,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,11,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,12,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,13,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,14,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,15,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,16,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,17,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,18,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,19,24);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,20,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,21,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,22,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,23,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,24,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,25,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,26,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,27,21);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,28,20);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,29,11);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,30,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,31,10);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,32,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,33,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,34,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,35,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,36,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,37,30);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,38,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,39,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,40,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,41,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,42,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,43,26);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,44,26);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,45,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,46,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,47,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,48,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,49,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,50,25);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,51,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,52,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,53,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,54,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,55,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,56,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,57,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,58,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,59,0);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,60,7);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,61,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,62,4);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,63,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,64,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,65,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,66,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,67,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,68,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,69,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,70,2);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,71,13);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,72,6);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,73,3);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,74,17);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,75,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,76,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,77,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,78,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,79,29);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,80,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,81,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,82,7);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,83,23);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,84,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,85,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,86,27);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,87,16);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,88,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,89,22);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,90,9);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,91,8);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,92,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,93,18);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,94,15);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,95,14);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,96,1);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,97,28);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,98,5);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,99,19);
-INSERT INTO production.stocks(store_id, product_id, quantity) VALUES(3,100,28);
+SET IDENTITY_INSERT production.stocks OFF;  
 GO
 
 --staff
 
-alter table [actor].[staffs] ADD CONSTRAINT stf_id default dbo.stf_id_auto() for staff_id
+
 
 INSERT INTO actor.staffs(first_name, last_name, email, phone, role) VALUES('Fabiola','Jackson','fabiola.jackson@bikes.shop','(831) 555-5554',0);
 
@@ -667,56 +471,56 @@ GO
 
 --order
 SET IDENTITY_INSERT sales.orders ON; 
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(1,'CUS011',4,'20220101','20220103','20220103',1,1,'STF02');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(2,'CUS01',4,'20220101','20220104','20220103',2,2,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(3,'CUS021',4,'20220102','20220105','20220103',2,3,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(4,'CUS041',4,'20220103','20220104','20220105',1,4,'STF03');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(5,'CUS031',4,'20220103','20220106','20220106',2,4,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(6,'CUS061',4,'20220104','20220107','20220105',2,3,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(7,'CUS051',4,'20220104','20220107','20220105',2,2,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(8,'CUS091',4,'20220104','20220105','20220105',2,1,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(9,'CUS081',4,'20220105','20220108','20220108',1,1,'STF04');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(10,'CUS071',4,'20220105','20220106','20220106',2,3,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(11,'CUS02',4,'20220105','20220108','20220107',2,2,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(12,'CUS022',4,'20220106','20220108','20220109',1,4,'STF05');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(13,'CUS042',4,'20220108','20220111','20220111',2,2,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(14,'CUS062',4,'20220109','20220111','20220112',1,1,'STF02');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(15,'CUS082',4,'20220109','20220110','20220112',2,4,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(16,'CUS012',4,'20220112','20220115','20220115',1,3,'STF03');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(17,'CUS032',4,'20220112','20220114','20220114',1,3,'STF04');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(18,'CUS052',4,'20220114','20220117','20220115',1,2,'STF05');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(19,'CUS072',4,'20220114','20220117','20220116',1,1,'STF02');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(20,'CUS092',4,'20220114','20220116','20220117',1,4,'STF03');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(21,'CUS013',4,'20220115','20220116','20220118',2,4,'STF02');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(22,'CUS033',4,'20220116','20220118','20220117',1,3,'STF04');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(23,'CUS053',4,'20220116','20220119','20220119',1,1,'STF05');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(24,'CUS073',4,'20220118','20220120','20220119',2,2,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(25,'CUS093',4,'20220118','20220121','20220121',2,3,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(26,'CUS03',4,'20220118','20220121','20220119',2,4,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(27,'CUS023',4,'20220119','20220121','20220120',2,2,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(28,'CUS043',4,'20220119','20220120','20220121',2,3,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(29,'CUS063',4,'20220120','20220122','20220121',2,1,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(30,'CUS083',4,'20220120','20220121','20220121',2,3,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(31,'CUS04',4,'20220120','20220122','20220122',3,2,'STF010');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(32,'CUS024',4,'20220121','20220124','20220122',1,3,'STF02');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(33,'CUS044',4,'20220121','20220122','20220122',2,1,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(34,'CUS064',4,'20220122','20220125','20220123',2,4,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(35,'CUS084',4,'20220122','20220125','20220124',2,2,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(36,'CUS014',4,'20220123','20220124','20220124',2,1,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(37,'CUS034',4,'20220125','20220128','20220126',2,3,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(38,'CUS054',4,'20220125','20220127','20220126',2,3,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(39,'CUS074',4,'20220125','20220126','20220126',2,2,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(40,'CUS094',4,'20220127','20220128','20220129',1,2,'STF03');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(41,'CUS05',4,'20220127','20220130','20220129',2,4,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(42,'CUS025',4,'20220127','20220128','20220130',2,3,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(43,'CUS045',4,'20220127','20220128','20220130',2,2,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(44,'CUS065',4,'20220128','20220131','20220130',2,1,'STF09');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(45,'CUS085',4,'20220128','20220131','20220131',2,1,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(46,'CUS015',4,'20220129','20220131','20220131',2,2,'STF07');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(47,'CUS035',4,'20220129','20220130','20220131',2,3,'STF08');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(48,'CUS055',4,'20220130','20220201','20220202',2,2,'STF09');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(49,'CUS075',4,'20220131','20220201','20220202',2,4,'STF06');
-INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(50,'CUS095',4,'20220131','20220203','20220202',3,1,'STF010');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(1,'CUS0000011',4,'20220101','20220103','20220103',1,1,'STF0000002');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(2,'CUS0000001',4,'20220101','20220104','20220103',2,2,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(3,'CUS0000021',4,'20220102','20220105','20220103',2,3,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(4,'CUS0000041',4,'20220103','20220104','20220105',1,4,'STF0000003');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(5,'CUS0000031',4,'20220103','20220106','20220106',2,4,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(6,'CUS0000061',4,'20220104','20220107','20220105',2,3,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(7,'CUS0000051',4,'20220104','20220107','20220105',2,2,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(8,'CUS0000091',4,'20220104','20220105','20220105',2,1,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(9,'CUS0000081',4,'20220105','20220108','20220108',1,1,'STF0000004');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(10,'CUS0000071',4,'20220105','20220106','20220106',2,3,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(11,'CUS0000002',4,'20220105','20220108','20220107',2,2,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(12,'CUS0000022',4,'20220106','20220108','20220109',1,4,'STF0000005');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(13,'CUS0000042',4,'20220108','20220111','20220111',2,2,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(14,'CUS0000062',4,'20220109','20220111','20220112',1,1,'STF0000002');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(15,'CUS0000082',4,'20220109','20220110','20220112',2,4,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(16,'CUS0000012',4,'20220112','20220115','20220115',1,3,'STF0000003');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(17,'CUS0000032',4,'20220112','20220114','20220114',1,3,'STF0000004');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(18,'CUS0000052',4,'20220114','20220117','20220115',1,2,'STF0000005');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(19,'CUS0000072',4,'20220114','20220117','20220116',1,1,'STF0000002');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(20,'CUS0000092',4,'20220114','20220116','20220117',1,4,'STF0000003');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(21,'CUS0000013',4,'20220115','20220116','20220118',2,4,'STF0000002');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(22,'CUS0000033',4,'20220116','20220118','20220117',1,3,'STF0000004');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(23,'CUS0000053',4,'20220116','20220119','20220119',1,1,'STF0000005');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(24,'CUS0000073',4,'20220118','20220120','20220119',2,2,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(25,'CUS0000093',4,'20220118','20220121','20220121',2,3,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(26,'CUS0000003',4,'20220118','20220121','20220119',2,4,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(27,'CUS0000023',4,'20220119','20220121','20220120',2,2,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(28,'CUS0000043',4,'20220119','20220120','20220121',2,3,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(29,'CUS0000063',4,'20220120','20220122','20220121',2,1,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(30,'CUS0000083',4,'20220120','20220121','20220121',2,3,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(31,'CUS0000094',4,'20220120','20220122','20220122',3,2,'STF0000010');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(32,'CUS0000024',4,'20220121','20220124','20220122',1,3,'STF0000002');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(33,'CUS0000044',4,'20220121','20220122','20220122',2,1,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(34,'CUS0000064',4,'20220122','20220125','20220123',2,4,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(35,'CUS0000084',4,'20220122','20220125','20220124',2,2,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(36,'CUS0000014',4,'20220123','20220124','20220124',2,1,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(37,'CUS0000034',4,'20220125','20220128','20220126',2,3,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(38,'CUS0000054',4,'20220125','20220127','20220126',2,3,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(39,'CUS0000074',4,'20220125','20220126','20220126',2,2,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(40,'CUS0000094',4,'20220127','20220128','20220129',1,2,'STF0000003');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(41,'CUS0000005',4,'20220127','20220130','20220129',2,4,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(42,'CUS0000025',4,'20220127','20220128','20220130',2,3,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(43,'CUS0000045',4,'20220127','20220128','20220130',2,2,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(44,'CUS0000065',4,'20220128','20220131','20220130',2,1,'STF0000009');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(45,'CUS0000085',4,'20220128','20220131','20220131',2,1,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(46,'CUS0000015',4,'20220129','20220131','20220131',2,2,'STF0000007');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(47,'CUS0000035',4,'20220129','20220130','20220131',2,3,'STF0000008');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(48,'CUS0000055',4,'20220130','20220201','20220202',2,2,'STF0000009');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(49,'CUS0000075',4,'20220131','20220201','20220202',2,4,'STF0000006');
+INSERT INTO sales.orders(order_id, customer_id, order_status, order_date, required_date, shipped_date, store_id,service_pack_id,staff_id) VALUES(50,'CUS0000095',4,'20220131','20220203','20220202',3,1,'STF0000010');
 SET IDENTITY_INSERT sales.orders OFF
 GO
 
@@ -872,308 +676,108 @@ GO
 
 
 --IMPORTS
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,1,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,2,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,3,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,4,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,5,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,6,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,7,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,8,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,9,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,10,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,11,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,12,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,13,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,14,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,15,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,16,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,17,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,18,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,19,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,20,26,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,21,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,22,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,23,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,24,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,25,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,26,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,27,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,28,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,29,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,30,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,31,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,32,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,33,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,34,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,35,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,36,26,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,37,12,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,38,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,39,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,40,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,41,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,42,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,43,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,44,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,45,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,46,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,47,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,48,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,49,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,50,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,51,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,52,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,53,17,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,54,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,55,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,56,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,57,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,58,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,59,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,60,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,61,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,62,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,63,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,64,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,65,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,66,12,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,67,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,68,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,69,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,70,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,71,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,72,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,73,7,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,74,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,75,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,76,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,77,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,78,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,79,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,80,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,81,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,82,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,83,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,84,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,85,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,86,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,87,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,88,7,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,89,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,90,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,91,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,92,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,93,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,94,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,95,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,96,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,97,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,98,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,99,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(1,100,15,'20221001');
-
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,1,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,2,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,3,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,4,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,5,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,6,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,7,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,8,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,9,17,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,10,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,11,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,12,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,13,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,14,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,15,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,16,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,17,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,18,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,19,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,20,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,21,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,22,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,23,12,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,24,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,25,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,26,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,27,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,28,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,29,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,30,17,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,31,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,32,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,33,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,34,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,35,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,36,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,37,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,38,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,39,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,40,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,41,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,42,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,43,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,44,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,45,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,46,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,47,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,48,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,49,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,50,7,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,51,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,52,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,53,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,54,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,55,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,56,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,57,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,58,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,59,17,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,60,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,61,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,62,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,63,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,64,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,65,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,66,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,67,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,68,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,69,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,70,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,71,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,72,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,73,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,74,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,75,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,76,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,77,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,78,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,79,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,80,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,81,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,82,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,83,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,84,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,85,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,86,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,87,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,88,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,89,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,90,26,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,91,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,92,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,93,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,94,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,95,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,96,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,97,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,98,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,99,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(2,100,12,'20221001');
-
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,1,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,2,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,3,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,4,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,5,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,6,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,7,12,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,8,12,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,9,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,10,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,11,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,12,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,13,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,14,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,15,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,16,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,17,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,18,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,19,24,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,20,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,21,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,22,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,23,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,24,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,25,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,26,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,27,21,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,28,20,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,29,11,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,30,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,31,10,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,32,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,33,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,34,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,35,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,36,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,37,30,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,38,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,39,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,40,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,41,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,42,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,43,26,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,44,26,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,45,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,46,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,47,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,48,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,49,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,50,25,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,51,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,52,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,53,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,54,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,55,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,56,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,57,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,58,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,59,0,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,60,7,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,61,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,62,4,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,63,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,64,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,65,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,66,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,67,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,68,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,69,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,70,2,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,71,13,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,72,6,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,73,3,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,74,17,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,75,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,76,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,77,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,78,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,79,29,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,80,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,81,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,82,7,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,83,23,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,84,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,85,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,86,27,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,87,16,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,88,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,89,22,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,90,9,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,91,8,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,92,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,93,18,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,94,15,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,95,14,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,96,1,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,97,28,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,98,5,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,99,19,'20221001');
-INSERT INTO production.imports(store_id, product_id, quantity, import_date) VALUES(3,100,28,'20221001');
+SET IDENTITY_INSERT production.imports ON;
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(1,1,1,27,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(2,1,2,5,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(3,1,3,6,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(4,1,4,23,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(5,1,5,22,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(6,1,6,0,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(7,1,7,8,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(8,1,8,0,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(9,1,9,11,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(10,1,10,15,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(11,1,11,8,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(12,1,12,16,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(13,1,13,13,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(14,1,14,8,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(15,1,15,3,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(16,1,16,4,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(17,1,17,2,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(18,1,18,16,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(19,1,19,4,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(20,1,20,26,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(21,1,21,24,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(22,1,22,29,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(23,1,23,9,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(24,1,24,10,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(25,1,25,10,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(26,1,26,16,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(27,1,27,21,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(28,1,28,20,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(29,1,29,13,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(30,1,30,30,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(31,1,31,2,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(32,1,32,0,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(33,1,33,10,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(34,1,34,2,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(35,2,35,18,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(36,2,36,26,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(37,2,37,12,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(38,2,38,13,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(39,2,39,2,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(40,2,40,24,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(41,2,41,10,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(42,2,42,0,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(43,2,43,2,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(44,2,44,1,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(45,2,45,15,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(46,2,46,19,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(47,2,47,21,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(48,2,48,5,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(49,2,49,8,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(50,2,50,29,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(51,2,51,2,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(52,2,52,18,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(53,2,53,17,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(54,2,54,11,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(55,2,55,11,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(56,2,56,15,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(57,2,57,1,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(58,2,58,1,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(59,2,59,22,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(60,2,60,19,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(61,2,61,30,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(62,2,62,21,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(63,2,63,4,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(64,2,64,30,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(65,2,65,10,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(66,2,66,12,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(67,3,67,19,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(68,3,68,30,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(69,3,69,4,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(70,3,70,3,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(71,3,71,25,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(72,3,72,9,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(73,3,73,7,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(74,3,74,9,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(75,3,75,23,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(76,3,76,15,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(77,3,77,16,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(78,3,78,13,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(79,3,79,13,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(80,3,80,11,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(81,3,81,25,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(82,3,82,1,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(83,3,83,13,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(84,3,84,11,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(85,3,85,23,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(86,3,86,19,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(87,3,87,27,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(88,3,88,7,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(89,3,89,9,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(90,3,90,4,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(91,3,91,8,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(92,3,92,0,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(93,3,93,22,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(94,3,94,6,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(95,3,95,25,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(96,3,96,20,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(97,3,97,20,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(98,3,98,28,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(99,3,99,28,'20221001');
+INSERT INTO production.imports(import_id,supplier_id, product_id, quantity, import_date) VALUES(100,3,100,15,'20221001');
+SET IDENTITY_INSERT production.imports OFF;
 GO
 
 --TAG
@@ -1198,6 +802,7 @@ INSERT INTO production.tags (tag_id, tag_name) VALUES (17,'SALE 85%')
 INSERT INTO production.tags (tag_id, tag_name) VALUES (18,'SALE 90%')
 INSERT INTO production.tags (tag_id, tag_name) VALUES (19,'BEST SELLER')
 INSERT INTO production.tags (tag_id, tag_name) VALUES (20,'NEW')
+SET IDENTITY_INSERT production.tags OFF;
 GO
 
 --PRODUCT_TAG
@@ -1212,144 +817,293 @@ GO
 
 --LOGIN_CUS
 alter table actor.user_logins nocheck constraint FK_user_logins_stafs
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS01','debraburks','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS02','pamelianewman','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS03','kelliefranco','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS04','deshawnmendoza','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS05','robbysykes','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS06','lashawnortiz','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS07','garryespinoza','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS08','linniebranch','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS09','emmittsanchez','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS010','carenstephens','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS011','georgettahardin','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS012','lizzettestein','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS013','kashatodd','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS014','aletashepard','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS015','tobielittle','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS016','adellelarsen','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS017','kayleeenglish','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS018','corenewall','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS019','regeniavaughan','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS020','theoreese','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS021','santosvalencia','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS022','jeanicefrost','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS023','syreetahendricks','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS024','tamekafisher','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS025','jamaalalbert','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS026','williemaeholloway','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS027','araceligolden','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS028','delorisburke','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS029','brittneywoodward','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS030','guillerminanoble','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS031','bernitamcdaniel','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS032','meliabrady','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS033','zelmabrowning','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS034','janettaaguirre','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS035','darylspence','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS036','ronnabutler','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS037','kathiefreeman','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS038','tangelaquinn','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS039','mozellecarter','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS040','onitajohns','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS041','bennettarmstrong','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS042','monikaberg','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS043','bridgetteguerra','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS044','cesarjackson','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS045','carollhays','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS046','charoletterice','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS047','cleotildebooth','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS048','gertrudrhodes','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS049','turamirez','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS050','saturninagarner','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS051','franyang','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS052','dianaguerra','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS053','lolitamosley','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS054','pamalahenry','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS055','damiendorsey','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS056','latashastanley','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS057','lyndseybean','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS058','neilmccall','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS059','elinoreaguilar','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS060','alicahunter','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS061','tenishalyons','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS062','bobbiefoster','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS063','kaneshavega','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS064','lorriebecker','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS065','tommiemelton','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS066','jaynekirkland','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS067','katelinkennedy','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS068','latashahays','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS069','tomasacarson','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS070','takakocasey','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS071','takakocasey','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS072','melaniehayes','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS073','georgeannwaller','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS074','abbygamble','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS075','parkerprince','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS076','keribridges','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS077','chigoff','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS078','ashantiparks','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS079','jacqulineduncan','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS080','saraimckee','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS081','zinabonner','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS082','lizziejoyner','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS083','tieshadaniel','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS084','armandwhitehead','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS085','teofilafischer','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS086','lissavargas','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS087','yanmcgowan','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS088','titusbullock','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS089','arvillaosborn','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS090','genovevabaldwin','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS091','marjorielogan','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS092','marvinmullins','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS093','tenacruz','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS094','corrinasawyer','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS095','sharynhopkins','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS096','letitiafranco','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS097','florettahiggins','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS098','louannemartin','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS099','violetvalenzuela','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0100','cariekidd','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000001','debraburks','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000002','pamelianewman','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000003','kelliefranco','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000004','deshawnmendoza','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000005','robbysykes','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000006','lashawnortiz','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000007','garryespinoza','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000008','linniebranch','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000009','emmittsanchez','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000010','carenstephens','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000011','georgettahardin','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000012','lizzettestein','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000013','kashatodd','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000014','aletashepard','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000015','tobielittle','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000016','adellelarsen','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000017','kayleeenglish','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000018','corenewall','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000019','regeniavaughan','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000020','theoreese','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000021','santosvalencia','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000022','jeanicefrost','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000023','syreetahendricks','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000024','tamekafisher','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000025','jamaalalbert','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000026','williemaeholloway','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000027','araceligolden','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000028','delorisburke','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000029','brittneywoodward','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000030','guillerminanoble','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000031','bernitamcdaniel','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000032','meliabrady','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000033','zelmabrowning','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000034','janettaaguirre','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000035','darylspence','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000036','ronnabutler','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000037','kathiefreeman','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000038','tangelaquinn','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000039','mozellecarter','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000040','onitajohns','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000041','bennettarmstrong','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000042','monikaberg','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000043','bridgetteguerra','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000044','cesarjackson','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000045','carollhays','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000046','charoletterice','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000047','cleotildebooth','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000048','gertrudrhodes','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000049','turamirez','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000050','saturninagarner','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000051','franyang','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000052','dianaguerra','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000053','lolitamosley','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000054','pamalahenry','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000055','damiendorsey','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000056','latashastanley','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000057','lyndseybean','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000058','neilmccall','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000059','elinoreaguilar','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000060','alicahunter','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000061','tenishalyons','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000062','bobbiefoster','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000063','kaneshavega','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000064','lorriebecker','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000065','tommiemelton','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000066','jaynekirkland','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000067','katelinkennedy','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000068','latashahays','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000069','tomasacarson','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000070','takakocasey','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000071','takakocasey','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000072','melaniehayes','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000073','georgeannwaller','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000074','abbygamble','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000075','parkerprince','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000076','keribridges','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000077','chigoff','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000078','ashantiparks','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000079','jacqulineduncan','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000080','saraimckee','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000081','zinabonner','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000082','lizziejoyner','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000083','tieshadaniel','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000084','armandwhitehead','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000085','teofilafischer','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000086','lissavargas','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000087','yanmcgowan','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000088','titusbullock','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000089','arvillaosborn','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000090','genovevabaldwin','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000091','marjorielogan','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000092','marvinmullins','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000093','tenacruz','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000094','corrinasawyer','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000095','sharynhopkins','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000096','letitiafranco','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000097','florettahiggins','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000098','louannemartin','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000099','violetvalenzuela','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('CUS0000100','cariekidd','123456')
 alter table actor.user_logins check constraint FK_user_logins_stafs
 GO
 
 
 --LOGIN_STF
 alter table actor.user_logins nocheck constraint FK_user_logins_customers
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF01','fabiolajackson','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF02','bernardinehouston','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF03','esteracevedo','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF04','leedunn','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF05','merriefowler','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF06','macieayers','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF07','sonwarner','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF08','florrielittle','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF09','ernestrollins','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF010','jamaalmorrison','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF011','cassiecline','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF012','mireyacopeland','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF013','lezlielamb','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF014','ivetteestes','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF015','elanamiles','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF016','nicolaknight','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF017','zonacameron','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF018','markbenton','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF019','taynawade','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF020','lorriejustice','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF021','carolajohns','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF022','mikelwilkerson','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF023','gennaserrano','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF024','londagould','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF025','justinajenkins','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF026','virgiewiggins','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF027','jannettedavid','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF028','marceleneboyer','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF029','venitadaniel','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF030','kalivargas','123456')
-INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF031','laylaterrell','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000001','fabiolajackson','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000002','bernardinehouston','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000003','esteracevedo','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000004','leedunn','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000005','merriefowler','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000006','macieayers','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000007','sonwarner','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000008','florrielittle','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000009','ernestrollins','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000010','jamaalmorrison','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000011','cassiecline','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000012','mireyacopeland','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000013','lezlielamb','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000014','ivetteestes','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000015','elanamiles','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000016','nicolaknight','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000017','zonacameron','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000018','markbenton','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000019','taynawade','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000020','lorriejustice','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000021','carolajohns','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000022','mikelwilkerson','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000023','gennaserrano','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000024','londagould','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000025','justinajenkins','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000026','virgiewiggins','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000027','jannettedavid','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000028','marceleneboyer','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000029','venitadaniel','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000030','kalivargas','123456')
+INSERT INTO actor.user_logins(user_id,user_name, user_password)VALUES ('STF0000031','laylaterrell','123456')
 alter table actor.user_logins check constraint FK_user_logins_customers
 GO
 
-
+--ORDER_ITEMS
+SET IDENTITY_INSERT production.exports ON;
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(1,20,1,'20220103');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(2,8,2,'20220103');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(3,10,2,'20220103');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(4,16,2,'20220103');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(5,4,1,'20220103');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(6,20,1,'20220104');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(7,16,2,'20220104');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(8,3,1,'20220105');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(9,20,1,'20220105');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(10,2,2,'20220104');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(11,10,2,'20220106');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(12,17,1,'20220106');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(13,26,1,'20220106');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(14,18,1,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(15,12,2,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(16,20,1,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(17,3,2,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(18,9,2,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(19,15,1,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(20,3,1,'20220107');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(21,17,2,'20220105');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(22,22,1,'20220105');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(23,20,2,'20220108');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(24,7,2,'20220106');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(25,14,1,'20220108');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(26,8,1,'20220108');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(27,22,2,'20220108');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(28,16,2,'20220108');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(29,4,2,'20220108');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(30,11,1,'20220111');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(31,13,1,'20220111');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(32,17,2,'20220111');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(33,20,2,'20220111');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(34,16,2,'20220111');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(35,6,1,'20220110');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(36,12,2,'20220110');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(37,8,1,'20220110');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(38,18,2,'20220110');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(39,23,2,'20220115');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(40,8,1,'20220115');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(41,21,1,'20220115');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(42,13,2,'20220115');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(43,14,1,'20220114');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(44,8,1,'20220114');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(45,23,1,'20220114');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(46,5,1,'20220114');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(47,20,2,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(48,2,2,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(49,22,1,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(50,7,1,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(51,25,2,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(52,9,2,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(53,10,1,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(54,9,2,'20220117');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(55,9,1,'20220116');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(56,10,2,'20220116');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(57,14,1,'20220116');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(58,17,1,'20220116');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(59,10,1,'20220116');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(60,15,2,'20220118');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(61,22,1,'20220118');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(62,4,2,'20220119');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(63,23,2,'20220119');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(64,13,1,'20220119');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(65,3,2,'20220120');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(66,18,2,'20220120');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(67,23,2,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(68,10,2,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(69,22,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(70,14,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(71,21,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(72,7,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(73,2,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(74,12,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(75,21,2,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(76,5,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(77,19,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(78,26,2,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(79,8,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(80,5,1,'20220120');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(81,7,2,'20220120');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(82,14,2,'20220120');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(83,6,1,'20220120');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(84,24,2,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(85,6,1,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(86,21,2,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(87,8,1,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(88,14,2,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(89,26,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(90,17,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(91,19,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(92,4,1,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(93,7,2,'20220121');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(95,11,2,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(96,9,2,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(97,8,2,'20220124');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(98,12,2,'20220124');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(99,25,2,'20220124');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(100,23,2,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(101,7,1,'20220122');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(102,8,2,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(103,10,2,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(104,17,2,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(105,18,1,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(106,20,2,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(107,5,1,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(108,21,2,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(109,22,1,'20220125');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(110,9,1,'20220124');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(111,5,1,'20220124');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(112,3,2,'20220124');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(113,16,2,'20220128');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(114,7,2,'20220127');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(115,23,1,'20220127');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(116,25,1,'20220127');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(117,10,2,'20220127');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(118,24,1,'20220127');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(119,22,2,'20220126');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(120,16,2,'20220126');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(121,3,2,'20220126');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(122,15,1,'20220126');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(123,17,1,'20220128');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(124,8,2,'20220128');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(125,5,1,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(126,19,2,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(127,26,2,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(128,19,1,'20220128');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(129,13,2,'20220128');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(130,12,2,'20220128');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(131,7,1,'20220131');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(132,16,1,'20220131');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(133,4,2,'20220131');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(134,22,1,'20220131');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(135,21,2,'20220131');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(136,17,1,'20220131');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(137,6,1,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(138,15,1,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(139,25,2,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(140,13,1,'20220130');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(141,11,1,'20220201');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(142,4,1,'20220201');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(143,5,2,'20220201');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(144,14,2,'20220201');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(145,13,2,'20220201');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(146,3,1,'20220203');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(147,26,2,'20220203');
+INSERT INTO production.exports(export_id, product_id, quantity,export_date) VALUES(148,13,2,'20220203');
+SET IDENTITY_INSERT production.exports OFF;
