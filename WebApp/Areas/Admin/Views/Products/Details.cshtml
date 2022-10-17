@@ -2,66 +2,79 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/_Shared/_DetailsView.cshtml";
 }
 
-<h2>Details</h2>
+<h4>Product Details</h4>
+<hr />
 
-<div>
-    <h4>product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.brand.brand_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.brand.brand_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.category.category_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.category.category_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.product_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.product_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.model_year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.model_year)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.list_price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.list_price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.image)
-        </dd>
-
-    </dl>
+<div class="input-items">
+    @Html.LabelFor(model => model.brand.brand_name,
+   htmlAttributes: new { @class = "control-label col-md-2" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.brand.brand_name, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="input-items">
+    @Html.LabelFor(model => model.category.category_name,
+   htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.category.category_name, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="input-items">
+    @Html.LabelFor(model => model.product_name,
+   htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.product_name, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="input-items">
+    @Html.LabelFor(model => model.model_year,
+   htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.model_year, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="input-items">
+    @Html.LabelFor(model => model.list_price,
+   htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.list_price, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="input-items">
+    @Html.LabelFor(model => model.image,
+   htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.image, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="row">
+    <div class="input-items col-1">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.product_id },
+       new { @class = "btn btn-default border" })
+    </div>
+    <div class="input-items col-2">
+        @Html.ActionLink("Back to List", "Index", null,
+       new { @class = "btn btn-default border" })
+    </div>
+</div>
