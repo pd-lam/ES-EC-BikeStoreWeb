@@ -2,26 +2,29 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/_Shared/_DetailsView.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>brand</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.brand_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.brand_name)
-        </dd>
-
-    </dl>
+<h4>Brand Details</h4>
+<hr />
+<div class="input-items">
+    @Html.LabelFor(model => model.brand_name,
+   htmlAttributes: new { @class = "control-label col-md-2" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.brand_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.brand_name, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="row">
+    <div class="input-items col-1">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.brand_id },
+       new { @class = "btn btn-default border" })
+    </div>
+    <div class="input-items col-2">
+        @Html.ActionLink("Back to List", "Index", null,
+       new { @class = "btn btn-default border" })
+    </div>
+</div>

@@ -33,11 +33,11 @@
             @Html.DisplayFor(modelItem => item.category_name)
         </td>
         <td>
-            <a href="@Url.Action("Edit", "Customers",
+            <a href="@Url.Action("Edit", "Categories",
                     new { id = item.category_id })">
                 <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
             </a>
-            <a href="@Url.Action("Details", "Customers",
+            <a href="@Url.Action("Details", "Categories",
                     new { id = item.category_id })">
                 <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
             </a>
