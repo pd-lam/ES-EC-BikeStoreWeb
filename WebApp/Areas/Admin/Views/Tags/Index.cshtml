@@ -20,7 +20,7 @@
         <td style="width: 50px">
             <span class="custom-checkbox">
                 <input type="checkbox"
-                       id="checkbox1"
+                       id="checkbox"
                        name="options[]"
                        value="1">
                 <label for="checkbox1"></label>
@@ -34,11 +34,11 @@
         </td>
         <td>
             <a href="@Url.Action("Edit", "Tags",
-                    new { id = item.tag_id })">
+        new { id = item.tag_id })">
                 <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
             </a>
             <a href="@Url.Action("Details", "Tags",
-                    new { id = item.tag_id })">
+        new { id = item.tag_id })">
                 <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
             </a>
         </td>

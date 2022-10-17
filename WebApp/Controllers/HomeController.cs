@@ -22,7 +22,7 @@ namespace WebApp.Controllers
 
         public ActionResult Store()
         {
-            return View(db.stores.FirstOrDefault());
+            return View();
         }
     }
 }

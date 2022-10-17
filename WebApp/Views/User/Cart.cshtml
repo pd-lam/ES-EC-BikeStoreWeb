@@ -1,128 +1,261 @@
 ﻿
 @{
     ViewBag.Title = "Cart";
-    Layout = "~/Views/Home/_HomeLayout.cshtml";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-@section style{
-    }
+@section style
+{
+    <style>
+        #cart body {
+            background: #ddd;
+            min-height: 100vh;
+            vertical-align: middle;
+            display: flex;
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
 
-<section class="pt-5 pb-5" style="margin-top: 100px">
-    <div class="container">
-        <div class="row w-100">
-            <div class="col-lg-12 col-md-12 col-12">
-                <h3 class="display-5 mb-2 text-center">Shopping Cart</h3>
-                <p class="mb-5 text-center">
-                    <i class="text-info font-weight-bold">3</i> items in your cart
-                </p>
-                <table id="shoppingCart" class="table table-condensed table-responsive">
-                    <thead>
-                        <tr>
-                            <th style="width:60%">Product</th>
-                            <th style="width:12%">Price</th>
-                            <th style="width:10%">Quantity</th>
-                            <th style="width:16%"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-md-3 text-left">
-                                        <img src="https://via.placeholder.com/250x250/5fa9f8/ffffff" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                    </div>
-                                    <div class="col-md-9 text-left mt-sm-2">
-                                        <h4>Product Name</h4>
-                                        <p class="font-weight-light">Brand &amp; Name</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Price">$49.00</td>
-                            <td data-th="Quantity">
-                                <input type="number" class="form-control form-control-lg text-center" value="1">
-                            </td>
-                            <td class="actions" data-th="">
-                                <div class="text-right">
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-sync"></i>
-                                    </button>
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-md-3 text-left">
-                                        <img src="https://via.placeholder.com/250x250/5fa9f8/ffffff" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                    </div>
-                                    <div class="col-md-9 text-left mt-sm-2">
-                                        <h4>Product Name</h4>
-                                        <p class="font-weight-light">Brand &amp; Name</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Price">$49.00</td>
-                            <td data-th="Quantity">
-                                <input type="number" class="form-control form-control-lg text-center" value="1">
-                            </td>
-                            <td class="actions" data-th="">
-                                <div class="text-right">
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-sync"></i>
-                                    </button>
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-md-3 text-left">
-                                        <img src="https://via.placeholder.com/250x250/5fa9f8/ffffff" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                    </div>
-                                    <div class="col-md-9 text-left mt-sm-2">
-                                        <h4>Product Name</h4>
-                                        <p class="font-weight-light">Brand &amp; Name</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Price">$49.00</td>
-                            <td data-th="Quantity">
-                                <input type="number" class="form-control form-control-lg text-center" value="1">
-                            </td>
-                            <td class="actions" data-th="">
-                                <div class="text-right">
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-sync"></i>
-                                    </button>
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="float-right text-right">
-                    <h4>Subtotal:</h4>
-                    <h1>$99.00</h1>
+        #cart .title {
+            margin-bottom: 5vh;
+        }
+
+        #cart .card {
+            margin: auto;
+            max-width: 950px;
+            width: 90%;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 1rem;
+            border: transparent;
+        }
+
+        @@media(max-width:767px) {
+            #cart .card {
+                margin: 3vh auto;
+            }
+        }
+
+        #cart .cart {
+            background-color: #fff;
+            padding: 4vh 5vh;
+            border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem;
+        }
+
+        @@media(max-width:767px) {
+            #cart .cart {
+                padding: 4vh;
+                border-bottom-left-radius: unset;
+                border-top-right-radius: 1rem;
+            }
+        }
+
+        #cart .summary {
+            background-color: #ddd;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            padding: 4vh;
+            color: rgb(65, 65, 65);
+        }
+
+        @@media(max-width:767px) {
+            #cart .summary {
+                border-top-right-radius: unset;
+                border-bottom-left-radius: 1rem;
+            }
+        }
+
+        #cart .summary .col-2 {
+            padding: 0;
+        }
+
+        #cart .summary .col-10 {
+            padding: 0;
+        }
+
+        #cart .row {
+            margin: 0;
+        }
+
+        #cart .title b {
+            font-size: 1.5rem;
+        }
+
+        #cart .main {
+            margin: 0;
+            padding: 2vh 0;
+            width: 100%;
+        }
+
+        #cart .col-2, .col {
+            padding: 0 1vh;
+        }
+
+        #cart a {
+            padding: 0 1vh;
+        }
+
+        #cart .close {
+            margin-left: auto;
+            font-size: 0.7rem;
+        }
+
+        #cart img {
+            width: 3.5rem;
+        }
+
+        #cart .back-to-shop {
+            margin-top: 4.5rem;
+        }
+
+        #cart h5 {
+            margin-top: 4vh;
+        }
+
+        #cart hr {
+            margin-top: 1.25rem;
+        }
+
+        #cart form {
+            padding: 2vh 0;
+        }
+
+        #cart select {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 1.5vh 1vh;
+            margin-bottom: 4vh;
+            outline: none;
+            width: 100%;
+            background-color: rgb(247, 247, 247);
+        }
+
+        #cart input {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 1vh;
+            margin-bottom: 4vh;
+            outline: none;
+            width: 100%;
+            background-color: rgb(247, 247, 247);
+        }
+
+            input:focus::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+        #cart .btn {
+            background-color: #000;
+            border-color: #000;
+            color: white;
+            width: 100%;
+            font-size: 0.7rem;
+            margin-top: 4vh;
+            padding: 1vh;
+            border-radius: 0;
+        }
+
+            .btn:focus {
+                box-shadow: none;
+                outline: none;
+                box-shadow: none;
+                color: white;
+                -webkit-box-shadow: none;
+                -webkit-user-select: none;
+                transition: none;
+            }
+
+            .btn:hover {
+                color: white;
+            }
+
+        #cart a {
+            color: black;
+        }
+
+            a:hover {
+                color: black;
+                text-decoration: none;
+            }
+
+        #code {
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: center;
+        }
+    </style>
+}
+
+<div class="card" style="margin-top: 100px" id="cart">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    <div class="col align-self-center text-right text-muted">3 items</div>
                 </div>
             </div>
+            <div class="row border-top border-bottom">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                    <div class="col">
+                        <div class="row text-muted">Shirt</div>
+                        <div class="row">Cotton T-shirt</div>
+                    </div>
+                    <div class="col">
+                        <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                    </div>
+                    <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
+                    <div class="col">
+                        <div class="row text-muted">Shirt</div>
+                        <div class="row">Cotton T-shirt</div>
+                    </div>
+                    <div class="col">
+                        <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                    </div>
+                    <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                </div>
+            </div>
+            <div class="row border-top border-bottom">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
+                    <div class="col">
+                        <div class="row text-muted">Shirt</div>
+                        <div class="row">Cotton T-shirt</div>
+                    </div>
+                    <div class="col">
+                        <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                    </div>
+                    <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                </div>
+            </div>
+            <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
         </div>
-        <div class="row mt-4 d-flex align-items-center">
-            <div class="col-sm-6 order-md-2 text-right">
-                <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
+        <div class="col-md-4 summary">
+            <div><h5><b>Summary</b></h5></div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:0;">ITEMS 3</div>
+                <div class="col text-right">&euro; 132.00</div>
             </div>
-            <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                <a href="catalog.html">
-                    <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
-                </a>
+            <form>
+                <p>SHIPPING</p>
+                <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
+                <p>GIVE CODE</p>
+                <input id="code" placeholder="Enter your code">
+            </form>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col">TOTAL PRICE</div>
+                <div class="col text-right">&euro; 137.00</div>
             </div>
+            <button class="btn">CHECKOUT</button>
         </div>
     </div>
-</section>
+
+</div>
+

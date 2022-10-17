@@ -151,7 +151,6 @@
     <Compile Include="Areas\Admin\Controllers\ServicePacksController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\StoresController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
     <Compile Include="Areas\Staff\Controllers\OrderController.cs" />
     <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
@@ -423,16 +422,12 @@
     <Content Include="Areas\Admin\Views\ServicePacks\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ServicePacks\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ServicePacks\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_Shared\_IndexLayout.cshtml" />
     <Content Include="Areas\Admin\Views\_Shared\_CreateLayout.cshtml" />
     <Content Include="Areas\Admin\Views\_Shared\_EditView.cshtml" />
     <Content Include="Areas\Staff\Views\web.config" />
     <Content Include="Areas\Staff\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_Shared\_DetailsView.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -470,6 +465,7 @@
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Orders_saler\Index.cshtml" />
     <Content Include="Views\Home\Store.cshtml" />
+    <Content Include="Views\User\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
