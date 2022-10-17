@@ -30,11 +30,10 @@ namespace WebApp.Controllers
         {
             List<order_items> Order_items = db.order_items.Where(s => s.order_id == id).ToList();
             return View(Order_items);
-
+        }
         public ActionResult Cart()
         {
             return View();
         }
-
     }
 }
