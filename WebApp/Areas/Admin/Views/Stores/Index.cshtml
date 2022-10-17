@@ -2,69 +2,59 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
 }
 
-<h2>Index</h2>
+@section title {Customer}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+@section fieldName
+{
+    <th>ID</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Address</th>
+}
+
+<!-- RenderBody -->
+@foreach (var item in Model)
+{
     <tr>
-        <th>
+        <td style="width: 50px">
+            <span class="custom-checkbox">
+                <input type="checkbox"
+                       id="checkbox1"
+                       name="options[]"
+                       value="1">
+                <label for="checkbox1"></label>
+            </span>
+        </td>
+        <td style="width: 50px">
             @Html.DisplayNameFor(model => model.store_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.district)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.city)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.store_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.phone)
+            @Html.DisplayNameFor(model => model.phone)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.district)
-        </td>
-        <td>
+            @Html.DisplayFor(modelItem => item.street),
+            @Html.DisplayFor(modelItem => item.district),
             @Html.DisplayFor(modelItem => item.city)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.image)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.store_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.store_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.store_id })
+            <a href="@Url.Action("Edit", "Stores",
+                    new { id = item.store_id })">
+                <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
+            </a>
+            <a href="@Url.Action("Details", "Stores",
+                    new { id = item.store_id })">
+                <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
+            </a>
         </td>
     </tr>
 }
-
-</table>

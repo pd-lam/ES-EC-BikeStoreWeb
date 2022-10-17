@@ -18,16 +18,17 @@ namespace WebApp.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<brand> brands { get; set; }
         public virtual DbSet<category> categories { get; set; }
+        public virtual DbSet<export> exports { get; set; }
         public virtual DbSet<import> imports { get; set; }
         public virtual DbSet<product_tag> product_tag { get; set; }
         public virtual DbSet<product> products { get; set; }
         public virtual DbSet<stock> stocks { get; set; }
+        public virtual DbSet<supplier> suppliers { get; set; }
         public virtual DbSet<tag> tags { get; set; }
         public virtual DbSet<order_items> order_items { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<service_packs> service_packs { get; set; }
         public virtual DbSet<service> services { get; set; }
-        public virtual DbSet<store> stores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -135,6 +136,10 @@ namespace WebApp.Models
                 .Property(e => e.image)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<supplier>()
+                .Property(e => e.supplier_name)
+                .IsUnicode(false);
+
             modelBuilder.Entity<tag>()
                 .Property(e => e.tag_name)
                 .IsUnicode(false);
@@ -183,34 +188,6 @@ namespace WebApp.Models
 
             modelBuilder.Entity<service>()
                 .Property(e => e.service_type)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.store_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.street)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.district)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.city)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<store>()
-                .Property(e => e.image)
                 .IsUnicode(false);
         }
     }

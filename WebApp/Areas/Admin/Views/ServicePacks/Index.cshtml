@@ -2,27 +2,35 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
 }
 
-<h2>Index</h2>
+@section title {Service Pack}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.service_pack_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th></th>
-    </tr>
+@section fieldName
+{
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+}
 
-@foreach (var item in Model) {
+<!-- RenderBody -->
+@foreach (var item in Model)
+{
+
     <tr>
+        <td style="width: 50px">
+            <span class="custom-checkbox">
+                <input type="checkbox"
+                       id="checkbox1"
+                       name="options[]"
+                       value="1">
+                <label for="checkbox1"></label>
+            </span>
+        </td>
+        <td style="width: 50px">
+            @Html.DisplayFor(modelItem => item.service_pack_id)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.service_pack_name)
         </td>
@@ -30,11 +38,14 @@
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.service_pack_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.service_pack_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.service_pack_id })
+            <a href="@Url.Action("Edit", "ServicePacks",
+                        new { id = item.service_pack_id })">
+                <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
+            </a>
+            <a href="@Url.Action("Details", "ServicePacks",
+                        new { id = item.service_pack_id })">
+                <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
+            </a>
         </td>
     </tr>
 }
-
-</table>

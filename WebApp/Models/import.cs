@@ -10,13 +10,10 @@ namespace WebApp.Models
     public partial class import
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int store_id { get; set; }
+        public int import_id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int supplier_id { get; set; }
+
         public int product_id { get; set; }
 
         public int? quantity { get; set; }
@@ -26,6 +23,6 @@ namespace WebApp.Models
 
         public virtual product product { get; set; }
 
-        public virtual store store { get; set; }
+        public virtual supplier supplier { get; set; }
     }
 }

@@ -5,7 +5,7 @@
 
 @section style
 {
-    <link href="~/Content/admin-site/admin-site.css" rel="stylesheet" />
+    @RenderSection("style", required: false)
 }
 
 @section scripts
@@ -41,8 +41,10 @@
 <div class="container-fluid">
     <div class="row min-vh-100 flex-column flex-md-row">
         <div class="col-12 col-md-3 col-xl-2 p-0 bg-dark ">
-            <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 sticky-top " id="sidebar">
-                <div class="text-center" style="color: white">
+            <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 sticky-top "
+                 id="sidebar">
+                <div class="text-center"
+                     style="color: white">
                     <h2>ADMIN PAGE</h2>
                 </div>
                 <button class="navbar-toggler"
@@ -53,33 +55,97 @@
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse order-last" id="nav">
+                <div class="collapse navbar-collapse order-last"
+                     id="nav">
                     <ul class="navbar-nav flex-column w-100 justify-content-center">
                         <li class="nav-item">
-                            <a href="#" class="nav-link p-3"> Home</a>
+                            <a href="@Url.Action("Index", "Dasboard")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Home
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link p-3"> Customer</a>
+                            <a href="@Url.Action("Index", "Customers")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Customer
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link p-3"> Staff </a>
+                            <a href="@Url.Action("Index", "Staffs")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Staff
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link p-3"> Category </a>
+                            <a href="#submenu2"
+                               data-bs-toggle="collapse"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Product
+                            </a>
+                            <ul class="collapse navbar-nav flex-column"
+                                id="submenu2"
+                                data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="@Url.Action("Index", "Products")" class="nav-link text-center">
+                                        All
+                                    </a>
+                                </li>
+                                @using (var ctx = new WebApp.Models.BikeStoreDbContext())
+                                {
+                                    foreach (WebApp.Models.category cate in ctx.categories)
+                                    {
+                                        <li class="w-100">
+                                            <a href="#" class="nav-link text-center">
+                                                @Html.DisplayFor(modelItem => cate.category_name)
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link p-3"> Brand </a>
+                            <a href="@Url.Action("Index", "Categories")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Category
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link p-3"> Product </a>
+                            <a href="@Url.Action("Index", "Brands")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Brand
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Stores")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Store
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Tags")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Tag
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Services")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Service
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "ServicePacks")"
+                               class="nav-link pt-3 pb-3 ps-5 pe-5">
+                                Service Pack
+                            </a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <div class="container-fluid col-12 col-md-9 col-xl-10 p-0">
+        <div class="container-fluid col-12 col-md-9 col-xl-10">
             @RenderBody()
         </div>
     </div>
-    
+
 </div>

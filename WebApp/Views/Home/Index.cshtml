@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    Layout = "~/Views/Home/_HomeLayout.cshtml";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
 <!-- #region Banner -->
@@ -330,7 +330,11 @@
     <div class="text-center container py-5">
         <h4 class="mt-4 mb-5 border border-3 p-3 bg-white"
             style="border-radius: 20px; margin-left: 20vw; margin-right: 20vw">
-            <strong>Xe đạp đường phố</strong>
+            <a class="text-decoration-none" 
+               style="cursor: pointer"
+               href="@Url.Action("Category", "Home", new {id = 1})">
+                <strong>Xe đạp đường phố</strong>
+            </a>
         </h4>
 
         <div class="row">

@@ -30,6 +30,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         [HttpPost]
         public ActionResult Register(customer e, user_logins a)
         {
@@ -120,6 +121,8 @@ namespace WebApp.Controllers
 
 
 
+=======
+>>>>>>> master
 
     }
 }
