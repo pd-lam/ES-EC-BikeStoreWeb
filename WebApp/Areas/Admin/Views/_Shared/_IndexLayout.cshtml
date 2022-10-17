@@ -277,8 +277,7 @@
 
 <div class="container-xl">
     <div class="table-responsive">
-        <div class="table-wrapper">
-
+        <div class="table-wrapper"> 
             <!-- #region Table -->
             <!-- Title -->
             <div class="table-title">
@@ -288,11 +287,11 @@
                     </div>
                     <div class="col-sm-6">
                         <a href="#"
-                           class="btn btn-danger float-end"
-                           data-toggle="modal">
+                                class="btn btn__delete btn-danger float-end"
+                                data-toggle="modal">
                             <i class='bx bx-trash fs-5 align-middle'></i>Delete
                         </a>
-                        <a href="#"
+                        <a href="@Url.Action("Create")"
                            class="btn btn-success float-end me-3"
                            data-toggle="modal">
                             <i class='bx bx-folder-plus fs-5 align-middle me-2'></i>Add
@@ -320,7 +319,6 @@
                     @RenderBody()
                 </tbody>
             </table>
-
             <!-- #endregion -->
 
         </div>

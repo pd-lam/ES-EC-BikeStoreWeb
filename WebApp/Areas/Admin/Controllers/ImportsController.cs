@@ -99,27 +99,26 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/Imports/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<string> ids)
         {
-            if (id == null)
+            if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            import import = db.imports.Find(id);
-            if (import == null)
+            List<int> idProduct = new List<int> { };
+            List<int> idStore = new List<int> { };
+            foreach(string s in ids)
             {
-                return HttpNotFound();
+                string[] arrListStr = s.Split(',');
+                idProduct.Add(Convert.ToInt32(arrListStr[0]));
+                idStore.Add(Convert.ToInt32(arrListStr[1]));
             }
-            return View(import);
-        }
-
-        // POST: Admin/Imports/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            import import = db.imports.Find(id);
-            db.imports.Remove(import);
+            var delete_list = db.imports.Where(x => idProduct.Contains(x.product_id)).Where(x => idStore.Contains(x.store_id)).ToList();
+            foreach (import c in delete_list)
+            {
+                db.imports.Remove(c);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

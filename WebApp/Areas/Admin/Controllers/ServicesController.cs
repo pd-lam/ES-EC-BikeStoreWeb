@@ -90,27 +90,18 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/Services/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> ids)
         {
-            if (id == null)
+            if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            service service = db.services.Find(id);
-            if (service == null)
+            var delete_list = db.services.Where(x => ids.Contains(x.service_id)).ToList();
+            foreach (service c in delete_list)
             {
-                return HttpNotFound();
+                db.services.Remove(c);
             }
-            return View(service);
-        }
-
-        // POST: Admin/Services/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            service service = db.services.Find(id);
-            db.services.Remove(service);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
