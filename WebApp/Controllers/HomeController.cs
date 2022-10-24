@@ -19,5 +19,10 @@ namespace WebApp.Controllers
         {
             return View(db.products.Where(p => p.category_id == id).ToList());
         }
+
+        public ActionResult Store()
+        {
+            return View();
+        }
     }
 }
