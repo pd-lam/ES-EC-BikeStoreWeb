@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebApp.Models;
+using PagedList;
 
 namespace WebApp.Controllers
 {
@@ -27,9 +29,15 @@ namespace WebApp.Controllers
             return View(user_Logins);
         }
 
-        public ActionResult Category(int? id)
+        public ActionResult Category(int category_id, int? page)
         {
-            return View(db.products.Where(p => p.category_id == id).ToList());
+            Session["category_id"] = category_id;
+            if (page == null) page = 1;
+            var pros = (from p in db.products where p.category_id == category_id
+                         select p).OrderBy(x => x.product_id);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(pros.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Service(int? id)

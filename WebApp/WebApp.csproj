@@ -459,11 +459,11 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Home\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\User\Cart.cshtml" />
     <Content Include="Views\User\Payment.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

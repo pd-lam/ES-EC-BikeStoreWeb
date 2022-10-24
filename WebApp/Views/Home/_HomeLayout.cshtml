@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link btn" href="/">Trang chủ</a>
+                        <a class="nav-link btn" href="/?user_id=@Session["user_id"]">Trang chủ</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -45,7 +45,7 @@
                                     {
                                         <li>
                                             <a class="dropdown-item" 
-                                               href="@Url.Action("Category", "Home", new {id = cate.category_id})">
+                                               href="@Url.Action("Category", "Home", new { category_id = cate.category_id})">
                                             @cate.category_name</a>
                                         </li>
                                     }
@@ -68,12 +68,15 @@
             <div class="collapse navbar-collapse" style="flex-grow: 0" id="navbar">
                 <ul class="navbar-nav">
                     @{
-                        var value = Model.user_id;
+                        var value = Session["user_id"];
                         if (value != null)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link btn" href="#">@Model.user_name</a>
-                            </li>
+                            using (var ctx = new WebApp.Models.BikeStoreDbContext())
+                            {
+                                WebApp.Models.user_logins ul = ctx.user_logins.Find(value);
+                                <li class="nav-item">
+                                    <a class="nav-link btn" href="#">@ul.user_name</a>
+                                </li>
                             <li class="nav-item d-flex">
                                 <a class="nav-link btn" href="#">
                                     <i class="fa-sharp fa-solid fa-cart-shopping me-1"></i>
@@ -84,7 +87,8 @@
                             <li class="nav-item">
                                 <a class="nav-link btn" href="/User/LogOut">Đăng xuất</a>
                             </li>
-                        }
+                                }
+                            }
                         else
                         {
                             <li class="nav-item">
