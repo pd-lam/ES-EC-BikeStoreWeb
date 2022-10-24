@@ -90,27 +90,18 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/Brands/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> ids)
         {
-            if (id == null)
+            if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            brand brand = db.brands.Find(id);
-            if (brand == null)
+            var delete_list = db.brands.Where(x => ids.Contains(x.brand_id)).ToList();
+            foreach (brand b in delete_list)
             {
-                return HttpNotFound();
+                db.brands.Remove(b);
             }
-            return View(brand);
-        }
-
-        // POST: Admin/Brands/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            brand brand = db.brands.Find(id);
-            db.brands.Remove(brand);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

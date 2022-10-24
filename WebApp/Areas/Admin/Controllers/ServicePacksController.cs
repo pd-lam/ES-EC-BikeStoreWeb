@@ -90,27 +90,18 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/ServicePacks/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> ids)
         {
-            if (id == null)
+            if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            service_packs service_packs = db.service_packs.Find(id);
-            if (service_packs == null)
+            var delete_list = db.service_packs.Where(x => ids.Contains(x.service_pack_id)).ToList();
+            foreach (service_packs c in delete_list)
             {
-                return HttpNotFound();
+                db.service_packs.Remove(c);
             }
-            return View(service_packs);
-        }
-
-        // POST: Admin/ServicePacks/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            service_packs service_packs = db.service_packs.Find(id);
-            db.service_packs.Remove(service_packs);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

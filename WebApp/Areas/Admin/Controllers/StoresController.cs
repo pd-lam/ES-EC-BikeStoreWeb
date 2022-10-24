@@ -10,102 +10,97 @@ using WebApp.Models;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class CustomersController : Controller
+    public class StoresController : Controller
     {
         private BikeStoreDbContext db = new BikeStoreDbContext();
 
-        // GET: Admin/Customers
+        // GET: Admin/stores
         public ActionResult Index()
         {
-            var customers = db.customers.Include(c => c.user_logins);
-            return View(customers.ToList());
+            return View(db.stores.ToList());
         }
 
-        // GET: Admin/Customers/Details/5
-        public ActionResult Details(string id)
+        // GET: Admin/stores/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            customer customer = db.customers.Find(id);
-            if (customer == null)
+            store store = db.stores.Find(id);
+            if (store == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(store);
         }
 
-        // GET: Admin/Customers/Create
+        // GET: Admin/stores/Create
         public ActionResult Create()
         {
-            ViewBag.customer_id = new SelectList(db.user_logins, "user_id", "user_name");
             return View();
         }
 
-        // POST: Admin/Customers/Create
+        // POST: Admin/stores/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "customer_id,first_name,last_name,phone,email,street,district,city")] customer customer)
+        public ActionResult Create([Bind(Include = "store_id,store_name,phone,email,street,district,city,image")] store store)
         {
             if (ModelState.IsValid)
             {
-                db.customers.Add(customer);
+                db.stores.Add(store);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customer_id = new SelectList(db.user_logins, "user_id", "user_name", customer.customer_id);
-            return View(customer);
+            return View(store);
         }
 
-        // GET: Admin/Customers/Edit/5
-        public ActionResult Edit(string id)
+        // GET: Admin/stores/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            customer customer = db.customers.Find(id);
-            if (customer == null)
+            store store = db.stores.Find(id);
+            if (store == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.customer_id = new SelectList(db.user_logins, "user_id", "user_name", customer.customer_id);
-            return View(customer);
+            return View(store);
         }
 
-        // POST: Admin/Customers/Edit/5
+        // POST: Admin/stores/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "customer_id,first_name,last_name,phone,email,street,district,city")] customer customer)
+        public ActionResult Edit([Bind(Include = "store_id,store_name,phone,email,street,district,city,image")] store store)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.customer_id = new SelectList(db.user_logins, "user_id", "user_name", customer.customer_id);
-            return View(customer);
+            return View(store);
         }
 
-        // GET: Admin/Customers/Delete/5
+        // GET: Admin/stores/Delete/5
         [HttpPost]
-        public ActionResult Delete(IEnumerable<string> ids)
+        public ActionResult Delete(IEnumerable<int> ids)
         {
             if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var delete_list = db.customers.Where(x => ids.Contains(x.customer_id)).ToList();
-            foreach(customer c in delete_list)
+            var delete_list = db.stores.Where(x => ids.Contains(x.store_id)).ToList();
+            foreach (store c in delete_list)
             {
-                db.customers.Remove(c);
+                db.stores.Remove(c);
             }
             db.SaveChanges();
             return RedirectToAction("Index");

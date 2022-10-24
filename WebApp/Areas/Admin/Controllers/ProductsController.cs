@@ -99,27 +99,18 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/Products/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> ids)
         {
-            if (id == null)
+            if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            product product = db.products.Find(id);
-            if (product == null)
+            var delete_list = db.products.Where(x => ids.Contains(x.product_id)).ToList();
+            foreach (product c in delete_list)
             {
-                return HttpNotFound();
+                db.products.Remove(c);
             }
-            return View(product);
-        }
-
-        // POST: Admin/Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            product product = db.products.Find(id);
-            db.products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

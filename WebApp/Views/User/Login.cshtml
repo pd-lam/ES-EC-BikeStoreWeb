@@ -20,63 +20,69 @@
                         <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                         <button type="button" class="btn btn-primary btn-floating mx-1">
                             <i class="fa-solid fa-envelope"></i>
-                        </button>                        
-                    </div>
-
-                    <div class="row my-4">                        
-                            <p class="text-center fw-bold mx-3 mb-0" style="color: #242729; font-size: 18px">Or</p> 
-                    </div>
-
-                    <!-- Username input -->
-                    <div class="form-outline mb-4">
-                        @Html.TextBoxFor(m => m.user_name, new
-                   {
-                       @placeholder = "Enter a valid username",
-                       @class = "form-control form-control-lg",
-                   })
-                        @Html.LabelFor(m => m.user_name, "Username", new
-                   {
-                       @class = "form-label",
-                   })
-                        @Html.ValidationMessageFor(m => m.user_name)
-                    </div>
-
-                    <!-- Password input -->
-                    <div class="form-outline mb-3">
-                        @Html.TextBoxFor(m => m.user_password, new
-                   {
-                       @type = "password",
-                       @placeholder = "Enter password",
-                       @class = "form-control form-control-lg",
-                   })
-                        @Html.LabelFor(m => m.user_password, "Password", new
-                   {
-                       @class = "form-label",
-                   })
-                        @Html.ValidationMessageFor(m => m.user_password)
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <!-- Checkbox -->
-                        <div class="form-check mb-0">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                            <label class="form-check-label" for="form2Example3">
-                                Remember me
-                            </label>
-                        </div>
-                        <a href="#!" class="text-body text-decoration-none">Forgot password?</a>
-                    </div>
-
-                    <div class="text-center text-lg-start mt-4 pt-2 mb-4">
-                        <button type="button" class="btn btn-primary btn-lg"
-                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                            Login
                         </button>
-                        <p class="small fw-bold mt-2 pt-1 mb-0">
-                            Don't have an account? <a href="/User/Register"
-                                                      class="link-danger">Register</a>
-                        </p>
                     </div>
+
+                    <div class="row my-4">
+                        <p class="text-center fw-bold mx-3 mb-0" style="color: #242729; font-size: 18px">Or</p>
+                    </div>
+                    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                    {
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                            @Html.TextBoxFor(m => m.user_name, "", new
+                       {
+                           @placeholder = "Enter a valid username",
+                           @class = "form-control form-control-lg",
+                       })
+                            @Html.LabelFor(m => m.user_name, "Username", new
+                       {
+                           @class = "form-label",
+                       })
+                            @Html.ValidationMessageFor(m => m.user_name)
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            @Html.TextBoxFor(m => m.user_password, new
+                       {
+                           @type = "password",
+                           @placeholder = "Enter password",
+                           @class = "form-control form-control-lg",
+                       })
+                            @Html.LabelFor(m => m.user_password, "Password", new
+                       {
+                           @class = "form-label",
+                       })
+                            @Html.ValidationMessageFor(m => m.user_password)
+                        </div>
+                        @Html.ValidationSummary(true, null, new
+                        {
+                       @class = "alert alert-danger",
+                   })
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label class="form-check-label" for="form2Example3">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="FogetPassword/" class="text-body">Forgot password?</a>
+                        </div>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Login/">
+                                Login
+                            </button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">
+                                Don't have an account? <a href="/Login/Register"
+                                                          class="link-danger">Register</a>
+                            </p>
+                        </div>
+                    }
 
                 </form>
             </div>
