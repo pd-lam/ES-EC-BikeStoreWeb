@@ -70,6 +70,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -78,6 +81,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -140,9 +149,9 @@
     <Compile Include="Areas\Admin\Controllers\ServicePacksController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\StoresController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
-    <Compile Include="Areas\ProductController.cs" />
+    <Compile Include="Areas\Staff\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -152,6 +161,7 @@
     <Compile Include="Models\brand.cs" />
     <Compile Include="Models\category.cs" />
     <Compile Include="Models\customer.cs" />
+    <Compile Include="Models\export.cs" />
     <Compile Include="Models\import.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\order_items.cs" />
@@ -161,7 +171,7 @@
     <Compile Include="Models\service_packs.cs" />
     <Compile Include="Models\staff.cs" />
     <Compile Include="Models\stock.cs" />
-    <Compile Include="Models\store.cs" />
+    <Compile Include="Models\supplier.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\tag.cs" />
     <Compile Include="Models\user_logins.cs" />
@@ -411,11 +421,6 @@
     <Content Include="Areas\Admin\Views\ServicePacks\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ServicePacks\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ServicePacks\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Stores\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_Shared\_IndexLayout.cshtml" />
     <Content Include="Areas\Admin\Views\_Shared\_CreateLayout.cshtml" />
     <Content Include="Areas\Admin\Views\_Shared\_EditView.cshtml" />
@@ -425,6 +430,9 @@
     <Content Include="Areas\Admin\Views\Imports\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Imports\Index.cshtml" />
     <Content Include="EmailTemplates\FogotPassWord.cshtml" />
+    <Content Include="Areas\Staff\Views\web.config" />
+    <Content Include="Areas\Staff\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_Shared\_DetailsView.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -457,17 +465,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\Home\_HomeLayout.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\User\Cart.cshtml" />
     <Content Include="Views\User\Payment.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
-    <Content Include="Views\Home\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Staff\Data\" />
+    <Folder Include="Areas\Staff\Views\Shared\" />
+    <Folder Include="Views\DetailOrder_customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

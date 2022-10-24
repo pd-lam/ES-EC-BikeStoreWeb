@@ -1,0 +1,244 @@
+﻿@{
+    ViewBag.Title = "Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section style {@RenderSection("style", required: false)}
+
+<!-- #region Navbar -->
+<section style="font-weight: bold">
+    <nav class="navbar navbar-expand-xl bg-light fixed-top">
+        <div class="container-fluid">
+            <!-- #region logo -->
+            <a class="navbar-brand" href="#">
+                <img src="/images/logo.png"
+                     alt="avatar"
+                     style="height: 50px; width: auto" />
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbar"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    style="float: right">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- #endregion -->
+            <!-- #region nav item -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="/?user_id=@Session["user_id"]">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link btn dropdown-toggle"
+                               data-bs-toggle="dropdown"
+                               style="cursor: pointer">
+                                Sản phẩm
+                            </a>
+                            <ul class="dropdown-menu">
+                                @using (var ctx = new WebApp.Models.BikeStoreDbContext())
+                                {
+                                    foreach (WebApp.Models.category cate in ctx.categories)
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" 
+                                               href="@Url.Action("Category", "Home", new { category_id = cate.category_id})">
+                                            @cate.category_name</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="#">Khuyến mãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="#">Dịch vụ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="#">Cửa hàng</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="collapse navbar-collapse" style="flex-grow: 0" id="navbar">
+                <ul class="navbar-nav">
+                    @{
+                        var value = Session["user_id"];
+                        if (value != null)
+                        {
+                            using (var ctx = new WebApp.Models.BikeStoreDbContext())
+                            {
+                                WebApp.Models.user_logins ul = ctx.user_logins.Find(value);
+                                <li class="nav-item">
+                                    <a class="nav-link btn" href="#">@ul.user_name</a>
+                                </li>
+                            <li class="nav-item d-flex">
+                                <a class="nav-link btn" href="#">
+                                    <i class="fa-sharp fa-solid fa-cart-shopping me-1"></i>
+                                    Giỏ hàng
+                                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn" href="/User/LogOut">Đăng xuất</a>
+                            </li>
+                                }
+                            }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn" href="/User/Login">Đăng nhập</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn" href="#">Đăng ký</a>
+                            </li>
+
+                        }
+                    }
+                </ul>
+
+                <form class="d-flex" style="margin: 5px 0 5px 0" role="search">
+                    <input class="form-control me-2"
+                           type="search"
+                           placeholder="Search"
+                           aria-label="Search" />
+                    <button class="btn btn-outline-secondary"
+                            type="submit"
+                            style="font-weight: bold">
+                        Search
+                    </button>
+                </form>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </nav>
+</section>
+<!-- #endregion -->
+
+@RenderBody()
+
+<!-- #region Footer -->
+<section>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted bg-dark">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</section>
+<!-- #endregion -->
