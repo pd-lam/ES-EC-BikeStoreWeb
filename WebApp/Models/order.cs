@@ -50,7 +50,5 @@ namespace WebApp.Models
         public virtual ICollection<order_items> order_items { get; set; }
 
         public virtual service_packs service_packs { get; set; }
-
-        public virtual store store { get; set; }
     }
 }

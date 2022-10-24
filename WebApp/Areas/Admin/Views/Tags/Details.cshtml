@@ -2,27 +2,41 @@
 
 @{
     ViewBag.Title = "Details";
-    
+    Layout = "~/Areas/Admin/Views/_Shared/_DetailsView.cshtml";
 
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>tag</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tag_name)
-        </dt>
+<h4>Tag Details</h4>
+<hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.tag_name)
-        </dd>
-
-    </dl>
+<div class="input-items">
+    @Html.LabelFor(model => model.tag_id,
+   htmlAttributes: new { @class = "control-label col-md-2" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.tag_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.tag_id, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="input-items">
+    @Html.LabelFor(model => model.tag_name,
+   htmlAttributes: new { @class = "control-label col-md-2" })
+</div>
+
+<div class="input-items">
+    @Html.TextBoxFor(model => model.tag_name, null,
+   new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
+</div>
+
+<div class="row">
+    <div class="input-items col-1">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.tag_id },
+       new { @class = "btn btn-default border" })
+    </div>
+    <div class="input-items col-2">
+        @Html.ActionLink("Back to List", "Index", null,
+       new { @class = "btn btn-default border" })
+    </div>
+</div>

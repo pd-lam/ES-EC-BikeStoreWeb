@@ -171,9 +171,5 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public ActionResult Payment()
-        {
-            return View();
-        }
     }
 }

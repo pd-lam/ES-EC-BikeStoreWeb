@@ -39,12 +39,5 @@ namespace WebApp.Controllers
             int pageNumber = (page ?? 1);
             return View(pros.ToPagedList(pageNumber, pageSize));
         }
-
-        public ActionResult Service(int? id)
-        {              
-            var sp = db.service_packs.Where(s => s.service_pack_id == id);
-            var services = db.services.Where(s => s.service_packs == sp);
-            return View(services.ToList());
-        }
     }
 }
