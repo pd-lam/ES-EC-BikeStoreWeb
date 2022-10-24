@@ -5,54 +5,58 @@
     Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
 }
 
-@section title {Customer}
-
-@section fieldName
+@using (Html.BeginForm("Delete", "Products", FormMethod.Post))
 {
-    <th>ID</th>
-    <th>Name</th>
-    <th>Brand</th>
-    <th>Year</th>
-    <th>Price</th>
-}
+    @section title {Customer}
 
-<!-- RenderBody -->
-@foreach (var item in Model)
+    @section fieldName
 {
-    <tr>
-        <td style="width: 50px">
-            <span class="custom-checkbox">
-                <input type="checkbox"
-                       id="checkbox1"
-                       name="options[]"
-                       value="1">
-                <label for="checkbox1"></label>
-            </span>
-        </td>
-        <td style="width: 50px">
-            @Html.DisplayFor(modelItem => item.product_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.brand.brand_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.model_year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.list_price)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", "Products",
-                    new { id = item.product_id })">
-                <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
-            </a>
-            <a href="@Url.Action("Details", "Products",
-                    new { id = item.product_id })">
-                <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
-            </a>
-        </td>
-    </tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Year</th>
+        <th>Price</th>
+    }
+
+    <!-- RenderBody -->
+    foreach (var item in Model)
+    {
+        <tr>
+            <td style="width: 50px">
+                <span class="custom-checkbox">
+                    <input type="checkbox"
+                           id="ids"
+                           name="ids"
+                           value="@item.product_id">
+                    <label for="checkbox1"></label>
+                </span>
+            </td>
+            <td style="width: 50px">
+                @Html.DisplayFor(modelItem => item.product_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand.brand_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model_year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.list_price)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Products",
+        new { id = item.product_id })">
+                    <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
+                </a>
+                <a href="@Url.Action("Details", "Products",
+        new { id = item.product_id })">
+                    <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
+                </a>
+            </td>
+        </tr>
+    }
+    <input type="submit" value="" id="submit_delete" hidden />
 }

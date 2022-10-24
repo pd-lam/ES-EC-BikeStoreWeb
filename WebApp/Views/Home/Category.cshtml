@@ -1,5 +1,5 @@
-﻿@model IEnumerable<WebApp.Models.product>
-
+﻿@model PagedList.IPagedList<WebApp.Models.product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
@@ -10,194 +10,53 @@
     <div class="text-center container py-5">
         <h4 class="mt-4 mb-5 border border-3 p-3 bg-white"
             style="border-radius: 20px; margin-left: 20vw; margin-right: 20vw">
-            <strong>Xe đạp địa hình</strong>
+            @using (var ctx = new WebApp.Models.BikeStoreDbContext())
+            {
+                WebApp.Models.category c = ctx.categories.Find(Session["category_id"]);
+                <strong>@c.category_name</strong>
+            }
         </h4>
 
         <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
-                <div class="card">
-                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                         data-mdb-ripple-color="light">
-                        <img src="https://xedap.vn/wp-content/uploads/2021/09/2131390009-850-2.jpg"
-                             class="w-100" />
-                        <a href="#!">
-                            <div class="mask">
-                                <div class="d-flex justify-content-start align-items-end h-100">
-                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+            @foreach (WebApp.Models.product pro in Model.ToList())
+            {
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                             data-mdb-ripple-color="light">
+                            <img src="https://xedap.vn/wp-content/uploads/2021/09/2131390009-850-2.jpg"
+                                 class="w-100" />
+                            <a href="#!">
+                                <div class="mask">
+                                    <div class="d-flex justify-content-start align-items-end h-100">
+                                        <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p>Category</p>
-                        </a>
-                        <h6 class="mb-3">$61.99</h6>
+                                <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="text-reset">
+                                <h5 class="card-title mb-3">@pro.product_name</h5>
+                            </a>
+                            <a href="" class="text-reset">
+                                <p>@pro.category.category_name</p>
+                            </a>
+                            <h6 class="mb-3">@pro.list_price$</h6>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card">
-                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                         data-mdb-ripple-color="light">
-                        <img src="https://xedap.vn/wp-content/uploads/2021/07/VINLAV2-7031-850.jpg"
-                             class="w-100" />
-                        <a href="#!">
-                            <div class="mask">
-                                <div class="d-flex justify-content-start align-items-end h-100">
-                                    <h5><span class="badge bg-success ms-2">Eco</span></h5>
-                                </div>
-                            </div>
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p>Category</p>
-                        </a>
-                        <h6 class="mb-3">$61.99</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card">
-                    <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-                        <img src="https://xedap.vn/wp-content/uploads/2021/12/RINCON-2-2022-grey-fix.jpg"
-                             class="w-100" />
-                        <a href="#!">
-                            <div class="mask">
-                                <div class="d-flex justify-content-start align-items-end h-100">
-                                    <h5><span class="badge bg-danger ms-2">-10%</span></h5>
-                                </div>
-                            </div>
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p>Category</p>
-                        </a>
-                        <h6 class="mb-3">
-                            <s>$61.99</s><strong class="ms-2 text-danger">$50.99</strong>
-                        </h6>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
 
-        <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
-                <div class="card">
-                    <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-                        <img src="https://xedap.vn/wp-content/uploads/2021/12/RINCON-2-2022-grey-fix.jpg"
-                             class="w-100" />
-                        <a href="#!">
-                            <div class="mask">
-                                <div class="d-flex justify-content-start align-items-end h-100">
-                                    <h5>
-                                        <span class="badge bg-success ms-2">Eco</span><span class="badge bg-danger ms-2">-10%</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p>Category</p>
-                        </a>
-                        <h6 class="mb-3">
-                            <s>$61.99</s><strong class="ms-2 text-danger">$50.99</strong>
-                        </h6>
-                    </div>
-                </div>
-            </div>
+        <br />
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card">
-                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                         data-mdb-ripple-color="light">
-                        <img src="https://xedap.vn/wp-content/uploads/2021/10/atx-620-red-850.jpg"
-                             class="w-100" />
-                        <a href="#!">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5>
-                                    <span class="badge bg-primary ms-2">New</span>
-                                </h5>
-                            </div>
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p>Category</p>
-                        </a>
-                        <h6 class="mb-3">$61.99</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card">
-                    <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-                        <img src="https://xedap.vn/wp-content/uploads/2021/11/10-4.jpg"
-                             class="w-100" />
-                        <a href="#!">
-                            <div class="mask">
-                                <div class="d-flex justify-content-start align-items-end h-100">
-                                    <h5>
-                                        <span class="badge bg-primary ms-2">New</span><span class="badge bg-success ms-2">Eco</span><span class="badge bg-danger ms-2">-10%</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="" class="text-reset">
-                            <h5 class="card-title mb-3">Product name</h5>
-                        </a>
-                        <a href="" class="text-reset">
-                            <p>Category</p>
-                        </a>
-                        <h6 class="mb-3">
-                            <s>$61.99</s><strong class="ms-2 text-danger">$50.99</strong>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a href="#" class="text-black"><h5>Xem thêm</h5></a>
+        @Html.PagedListPager(Model, page => Url.Action("Category",
+            new { category_id = Session["category_id"], page = page }))
     </div>
 </section>
+
+

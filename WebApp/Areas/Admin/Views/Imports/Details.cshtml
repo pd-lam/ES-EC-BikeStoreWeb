@@ -1,0 +1,51 @@
+﻿@model WebApp.Models.import
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>import</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.store.store_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.store.store_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.import_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.import_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id_store = Model.store_id, id_product = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

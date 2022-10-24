@@ -95,27 +95,18 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: Admin/Staffs/Delete/5
-        public ActionResult Delete(string id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<string> ids)
         {
-            if (id == null)
+            if (ids == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            staff staff = db.staffs.Find(id);
-            if (staff == null)
+            var delete_list = db.staffs.Where(x => ids.Contains(x.staff_id)).ToList();
+            foreach (staff c in delete_list)
             {
-                return HttpNotFound();
+                db.staffs.Remove(c);
             }
-            return View(staff);
-        }
-
-        // POST: Admin/Staffs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            staff staff = db.staffs.Find(id);
-            db.staffs.Remove(staff);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -5,47 +5,51 @@
     Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
 }
 
-@section title {Service Pack}
-
-@section fieldName
+@using (Html.BeginForm("Delete", "ServicePacks", FormMethod.Post))
 {
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-}
+    @section title {Service Pack}
 
-<!-- RenderBody -->
-@foreach (var item in Model)
+    @section fieldName
 {
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+    }
 
-    <tr>
-        <td style="width: 50px">
-            <span class="custom-checkbox">
-                <input type="checkbox"
-                       id="checkbox1"
-                       name="options[]"
-                       value="1">
-                <label for="checkbox1"></label>
-            </span>
-        </td>
-        <td style="width: 50px">
-            @Html.DisplayFor(modelItem => item.service_pack_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.service_pack_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", "ServicePacks",
-                        new { id = item.service_pack_id })">
-                <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
-            </a>
-            <a href="@Url.Action("Details", "ServicePacks",
-                        new { id = item.service_pack_id })">
-                <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
-            </a>
-        </td>
-    </tr>
+    <!-- RenderBody -->
+    foreach (var item in Model)
+    {
+
+        <tr>
+            <td style="width: 50px">
+                <span class="custom-checkbox">
+                    <input type="checkbox"
+                           id="ids"
+                           name="ids"
+                           value="@item.service_pack_id">
+                    <label for="checkbox1"></label>
+                </span>
+            </td>
+            <td style="width: 50px">
+                @Html.DisplayFor(modelItem => item.service_pack_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.service_pack_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "ServicePacks",
+            new { id = item.service_pack_id })">
+                    <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
+                </a>
+                <a href="@Url.Action("Details", "ServicePacks",
+            new { id = item.service_pack_id })">
+                    <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
+                </a>
+            </td>
+        </tr>
+    }
+    <input type="submit" value="" id="submit_delete" hidden />
 }

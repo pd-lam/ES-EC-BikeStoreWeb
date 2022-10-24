@@ -1,20 +1,20 @@
-﻿@model IEnumerable<WebApp.Models.staff>
+﻿@model IEnumerable<WebApp.Models.import>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/_Shared/_IndexLayout.cshtml";
 }
 
-@using (Html.BeginForm("Delete", "Staffs", FormMethod.Post))
+@using (Html.BeginForm("Delete", "Imports", FormMethod.Post))
 {
-    @section title {Staff}
+    @section title {Import}
 
     @section fieldName
 {
-        <th>ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
+        <th>Store name</th>
+        <th>Product name</th>
+        <th>Quantity</th>
+        <th>Import date</th>
     }
 
     <!-- RenderBody -->
@@ -26,34 +26,33 @@
                     <input type="checkbox"
                            id="ids"
                            name="ids"
-                           value="@item.staff_id">
+                           value="@item.product_id, @item.store_id">
                     <label for="checkbox1"></label>
                 </span>
             </td>
             <td style="width: 50px">
-                @Html.DisplayFor(modelItem => item.staff_id)
+                @Html.DisplayFor(modelItem => item.store.store_name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.first_name)
-                @Html.DisplayFor(modelItem => item.last_name)
+                @Html.DisplayFor(modelItem => item.product.product_name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.phone)
+                @Html.DisplayFor(modelItem => item.quantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.email)
+                @Html.DisplayFor(modelItem => item.import_date)
             </td>
             <td>
-                <a href="@Url.Action("Edit", "Staffs",
-        new { id = item.staff_id })">
+                <a href="@Url.Action("Edit", "Imports",
+        new { id_store = item.store_id, id_product = item.product_id })">
                     <i class='bx bxs-edit-alt float-end fs-4 me-1 ms-1'></i>
                 </a>
-                <a href="@Url.Action("Details", "Staffs",
-        new { id = item.staff_id })">
+                <a href="@Url.Action("Details", "Imports",
+        new { id_store = item.store_id, id_product = item.product_id })">
                     <i class='bx bx-detail float-end fs-4 me-1 ms-1'></i>
                 </a>
             </td>
         </tr>
     }
-    <input type="submit" value="" id="submit_delete" hidden />
+    <input type = "submit" value = "" id = "submit_delete" hidden />
 }
